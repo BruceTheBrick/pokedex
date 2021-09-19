@@ -1,0 +1,19 @@
+.list-item {
+  border: 2px solid black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column-reverse;
+
+  justify-content: center;
+  align-items: center;
+
+  max-width: 60%;
+}
+
+.list-item .title {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.list-item .sprite {
+}
