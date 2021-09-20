@@ -1,0 +1,27 @@
+.list-item {
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.list-item .header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-item .type {
+  text-transform: capitalize;
+}
+
+.water {
+  background: lightblue;
+}
+
+.fire {
+  background: lightcoral;
+}
+
+.grass {
+  background: lightgreen;
+}
