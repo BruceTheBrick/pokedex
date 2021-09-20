@@ -6,19 +6,19 @@ const pokies = [
   {
     id: 1,
     name: "Bulbasaur",
-    types: ["grass"],
+    types: ["grass", "poison"],
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
   },
   {
     id: 2,
     name: "Ivysaur",
-    types: ["grass"],
+    types: ["grass", "poison"],
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
   },
   {
     id: 3,
     name: "Venasaur",
-    types: ["grass"],
+    types: ["grass", "poison"],
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
   },
   {
@@ -36,7 +36,7 @@ const pokies = [
   {
     id: 6,
     name: "Charizard",
-    types: ["fire"],
+    types: ["fire", "flying"],
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
   },
   {

@@ -1,4 +1,6 @@
-import "./List.css";
+import "./PokemonItem.css";
+import PkBall from "../assets/pkball-icon.png";
+
 const PokemonItem = ({ pokemon }) => {
   return (
     <div key={pokemon.id} className={"list-item " + pokemon.types[0]}>
@@ -6,11 +8,18 @@ const PokemonItem = ({ pokemon }) => {
         <div className="name">{pokemon.name}</div>
         <div className="id">#{getId(pokemon.id)}</div>
       </div>
-      {pokemon.types.map((type) => {
-        return <div className="type">{type}</div>;
-      })}
-      <div className="sprite">
-        <img src={pokemon.imgURL} alt={pokemon.name} title={pokemon.name}></img>
+      <div className="body">
+        <div className="types">
+          {pokemon.types.map((type) => {
+            return <div className="type">{type}</div>;
+          })}
+        </div>
+        <div className="sprite">
+          <img src={pokemon.imgURL} alt={pokemon.name} title={pokemon.name}></img>
+        </div>
+      </div>
+      <div className="background-image">
+        <img src={PkBall} alt="" />
       </div>
     </div>
   );
