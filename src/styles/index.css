@@ -1,0 +1,20 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: PokemonGBA;
+}
+
+:root {
+  --red: lightcoral;
+  --red-darker: rgb(235, 95, 95);
+
+  --blue: lightblue;
+  --blue-darker: rgb(136, 209, 233);
+
+  --green: lightgreen;
+  --green-darker: rgb(114, 240, 114);
+}

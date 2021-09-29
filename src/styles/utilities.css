@@ -1,0 +1,11 @@
+:root {
+  --space-xs: 0.5rem;
+  --space-s: 0.75rem;
+  --space-base: 1rem;
+  --space-m: 18px;
+  --space-l: 24px;
+
+  --border-radius-soft: 1rem;
+  --border-radius-rounded: 200px;
+  --border-radius-circle: 50%;
+}
