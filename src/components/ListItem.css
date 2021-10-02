@@ -4,6 +4,7 @@
   padding: var(--space-base);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .list-item .header {

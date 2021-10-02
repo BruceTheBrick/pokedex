@@ -5,12 +5,7 @@ const List = ({ list, navigation }) => {
     <div className="list">
       {list.map((pokemon) => (
         <>
-          <PokemonItem key={pokemon.id} pokemon={pokemon} />
-          <button
-            onClick={() => {
-              navigation.navigate("Details", { pokemon });
-            }}
-          />
+          <PokemonItem navigation={navigation} key={pokemon.id} pokemon={pokemon} />
         </>
       ))}
     </div>

@@ -1,9 +1,15 @@
 import "./ListItem.css";
 import PkBall from "../assets/pkball-icon.png";
 
-const PokemonItem = ({ pokemon }) => {
+const PokemonItem = ({ pokemon, navigation }) => {
   return (
-    <div key={pokemon.id} className={"list-item " + pokemon.types[0]}>
+    <div
+      key={pokemon.id}
+      onClick={() => {
+        navigation.navigate("Details", { pokemon });
+      }}
+      className={"list-item " + pokemon.types[0]}
+    >
       <div className="header">
         <div className="name">{pokemon.name}</div>
         <div className="id">#{getId(pokemon.id)}</div>
