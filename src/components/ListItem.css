@@ -7,6 +7,10 @@
   cursor: pointer;
 }
 
+.list-item:hover {
+  opacity: 0.8;
+}
+
 .list-item .header {
   display: flex;
   flex-direction: row;

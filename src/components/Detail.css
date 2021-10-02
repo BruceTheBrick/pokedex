@@ -1,0 +1,8 @@
+.pokemon-img {
+}
+
+.pokemon-img img {
+  border-radius: 50%;
+  border: 2px solid black;
+  object-fit: cover;
+}
