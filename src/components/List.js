@@ -1,6 +1,6 @@
 import "./List.css";
 
-import PokemonItem from "./PokemonItem";
+import PokemonItem from "./ListItem";
 const List = ({ list, navigation }) => {
   return (
     <div className="list">
