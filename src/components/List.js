@@ -1,10 +1,13 @@
 import "./List.css";
-import PokemonItem from "./PokemonItem";
-const List = ({ list }) => {
+
+import PokemonItem from "./ListItem";
+const List = ({ list, navigation }) => {
   return (
     <div className="list">
       {list.map((pokemon) => (
-        <PokemonItem key={pokemon.id} pokemon={pokemon} />
+        <>
+          <PokemonItem navigation={navigation} key={pokemon.id} pokemon={pokemon} />
+        </>
       ))}
     </div>
   );

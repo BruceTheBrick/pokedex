@@ -1,1 +1,168 @@
-[{"D:\\Desktop\\pokedex\\src\\index.js":"1","D:\\Desktop\\pokedex\\src\\reportWebVitals.js":"2","D:\\Desktop\\pokedex\\src\\App.js":"3","D:\\Desktop\\pokedex\\src\\components\\List.js":"4","D:\\Desktop\\pokedex\\src\\components\\PokemonItem.js":"5"},{"size":588,"mtime":1633849971284,"results":"6","hashOfConfig":"7"},{"size":375,"mtime":1633849971294,"results":"8","hashOfConfig":"7"},{"size":1689,"mtime":1633852982570,"results":"9","hashOfConfig":"7"},{"size":283,"mtime":1633852982570,"results":"10","hashOfConfig":"7"},{"size":1086,"mtime":1633852982571,"results":"11","hashOfConfig":"7"},{"filePath":"12","messages":"13","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0},"e86h5m",{"filePath":"14","messages":"15","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0},{"filePath":"16","messages":"17","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0},{"filePath":"18","messages":"19","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0},{"filePath":"20","messages":"21","errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0},"D:\\Desktop\\pokedex\\src\\index.js",[],"D:\\Desktop\\pokedex\\src\\reportWebVitals.js",[],"D:\\Desktop\\pokedex\\src\\App.js",[],"D:\\Desktop\\pokedex\\src\\components\\List.js",[],"D:\\Desktop\\pokedex\\src\\components\\PokemonItem.js",[]]
+[
+  {
+    "D:\\Desktop\\pokedex\\src\\index.js": "1",
+    "D:\\Desktop\\pokedex\\src\\reportWebVitals.js": "2",
+    "D:\\Desktop\\pokedex\\src\\App.js": "3",
+    "D:\\Desktop\\pokedex\\src\\components\\List.js": "4",
+    "D:\\Desktop\\pokedex\\src\\components\\Detail.js": "5",
+    "D:\\Desktop\\pokedex\\src\\components\\ListItem.js": "6"
+  },
+  {
+    "size": 588,
+    "mtime": 1633849971284,
+    "results": "7",
+    "hashOfConfig": "8"
+  },
+  {
+    "size": 375,
+    "mtime": 1633849971294,
+    "results": "9",
+    "hashOfConfig": "8"
+  },
+  {
+    "size": 2446,
+    "mtime": 1633853334886,
+    "results": "10",
+    "hashOfConfig": "8"
+  },
+  {
+    "size": 343,
+    "mtime": 1633853334889,
+    "results": "11",
+    "hashOfConfig": "8"
+  },
+  {
+    "size": 360,
+    "mtime": 1633853334888,
+    "results": "12",
+    "hashOfConfig": "8"
+  },
+  {
+    "size": 1203,
+    "mtime": 1633853334890,
+    "results": "13",
+    "hashOfConfig": "8"
+  },
+  {
+    "filePath": "14",
+    "messages": "15",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "16"
+  },
+  "e86h5m",
+  {
+    "filePath": "17",
+    "messages": "18",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": "16"
+  },
+  {
+    "filePath": "19",
+    "messages": "20",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 2,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": null
+  },
+  {
+    "filePath": "21",
+    "messages": "22",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "23",
+    "messages": "24",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  {
+    "filePath": "25",
+    "messages": "26",
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0
+  },
+  "D:\\Desktop\\pokedex\\src\\index.js",
+  [],
+  [
+    "27",
+    "28"
+  ],
+  "D:\\Desktop\\pokedex\\src\\reportWebVitals.js",
+  [],
+  "D:\\Desktop\\pokedex\\src\\App.js",
+  [
+    "29",
+    "30"
+  ],
+  "D:\\Desktop\\pokedex\\src\\components\\List.js",
+  [],
+  "D:\\Desktop\\pokedex\\src\\components\\Detail.js",
+  [],
+  "D:\\Desktop\\pokedex\\src\\components\\ListItem.js",
+  [],
+  {
+    "ruleId": "31",
+    "replacedBy": "32"
+  },
+  {
+    "ruleId": "33",
+    "replacedBy": "34"
+  },
+  {
+    "ruleId": "35",
+    "severity": 1,
+    "message": "36",
+    "line": 4,
+    "column": 10,
+    "nodeType": "37",
+    "messageId": "38",
+    "endLine": 4,
+    "endColumn": 14
+  },
+  {
+    "ruleId": "35",
+    "severity": 1,
+    "message": "39",
+    "line": 4,
+    "column": 16,
+    "nodeType": "37",
+    "messageId": "38",
+    "endLine": 4,
+    "endColumn": 20
+  },
+  "no-native-reassign",
+  [
+    "40"
+  ],
+  "no-negated-in-lhs",
+  [
+    "41"
+  ],
+  "no-unused-vars",
+  "'View' is defined but never used.",
+  "Identifier",
+  "unusedVar",
+  "'Text' is defined but never used.",
+  "no-global-assign",
+  "no-unsafe-negation"
+]
