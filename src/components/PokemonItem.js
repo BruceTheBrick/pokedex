@@ -3,7 +3,7 @@ import PkBall from "../assets/pkball-icon.png";
 
 const PokemonItem = ({ pokemon }) => {
   return (
-    <div key={pokemon.id} className={"list-item " + pokemon.types[0]}>
+    <div className={"list-item " + pokemon.types[0]}>
       <div className="header">
         <div className="name">{pokemon.name}</div>
         <div className="id">#{getId(pokemon.id)}</div>
