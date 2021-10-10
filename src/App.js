@@ -5,7 +5,7 @@ import List from "./components/List.js";
 const pokies = [
   {
     id: 1,
-    name: "Bulbasaur",
+    name: "Testmon",
     types: ["grass", "poison"],
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
   },
