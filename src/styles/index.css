@@ -18,3 +18,15 @@
   --green: lightgreen;
   --green-darker: rgb(114, 240, 114);
 }
+
+.bg_water {
+  background: var(--blue);
+}
+
+.bg_fire {
+  background: var(--red);
+}
+
+.bg_grass {
+  background: var(--green);
+}

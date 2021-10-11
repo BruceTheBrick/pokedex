@@ -25,14 +25,17 @@
 .header .name {
   font-weight: bolder;
 }
+
 .header .id {
   color: rgba(0, 0, 0, 0.4);
 }
+
 .body {
   display: grid;
   grid-template-areas: "types sprite";
   grid-template-columns: 50% auto;
 }
+
 .background-image {
   position: absolute;
   opacity: 0.1;
@@ -62,16 +65,4 @@
   border-radius: var(--border-radius-soft);
   background: rgba(255, 255, 255, 0.4);
   padding: 0.35em 0.35em;
-}
-
-.water {
-  background: var(--blue);
-}
-
-.fire {
-  background: var(--red);
-}
-
-.grass {
-  background: var(--green);
 }

@@ -63,6 +63,18 @@ const pokies = [
     types: ["water"],
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
   },
+  {
+    id: 321,
+    name: "Wailord",
+    types: ["water"],
+    imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/321.png",
+  },
+  {
+    id: 890,
+    name: "Eternatus",
+    types: ["poison", "dragon"],
+    imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/890.png",
+  },
 ];
 const Stack = createNativeStackNavigator();
 function HomeScreen({ navigation }) {

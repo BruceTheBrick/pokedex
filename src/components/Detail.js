@@ -17,13 +17,17 @@ class Detail extends React.Component {
     const { pokemon } = this.props.route.params;
     return (
       <div className="content">
-        <button onClick={() => this.props.navigation.goBack()}>Return</button>
+        <button className="btn return" onClick={() => this.props.navigation.goBack()}>
+          <div className="arrow">&#10147;</div> Return
+        </button>
+        <div className={"bg_curved " + ("bg_" + pokemon.types[0])}></div>
         <div className="pokemon">
           <div className={"pokemon-img " + (this.state.isSpinning ? "spin-3d" : "")}>
             <img src={pokemon.imgURL} alt={"Sprite of " + pokemon} />
             <div className="sprite-shadow"></div>
           </div>
         </div>
+
         <div>
           <input type="checkbox" name="isSpinning" id="isSpinning" onClick={this.updateSpin} />
         </div>

@@ -9,3 +9,20 @@
   --border-radius-rounded: 200px;
   --border-radius-circle: 50%;
 }
+
+.btn {
+  padding: 1em 1.125em;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+}
+
+.btn > * {
+  display: inline-block;
+  margin-right: 0.25em;
+}
+
+.btn .arrow {
+  font-size: 2rem;
+  animation: point-right 1.5s infinite cubic-bezier(0.5, 0, 0.5, 1);
+}
