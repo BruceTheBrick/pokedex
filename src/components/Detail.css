@@ -3,18 +3,11 @@
   justify-content: center;
 }
 
-.pokemon-img {
-  position: relative;
-  animation: spin-3d 10s infinite linear;
-}
-
 .pokemon-img img {
   display: block;
   border-radius: 50%;
   border: 2px solid black;
   object-fit: cover;
-
-  /* animation: spin-3d 10s infinite linear; */
 }
 
 .sprite-shadow {
@@ -26,7 +19,10 @@
   background: #000;
   box-shadow: 0 0 7px 5px #000;
   opacity: 0.125;
-  /* animation: spin-3d 10s infinite linear; */
+}
+
+.spin-3d {
+  animation: spin-3d 10s infinite linear;
 }
 
 @keyframes spin-3d {
