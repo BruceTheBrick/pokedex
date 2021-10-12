@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
   font-family: PokemonGBA;
 }
 
@@ -17,6 +16,25 @@
 
   --green: lightgreen;
   --green-darker: rgb(114, 240, 114);
+
+  --normal: #a8a77b;
+  --fire: #ef7e3b;
+  --water: #6893ec;
+  --grass: #7ac75a;
+  --electric: #f8ce47;
+  --ice: #99d8d8;
+  --fighting: #bf2f2c;
+  --poison: #9f439d;
+  --ground: #e0bf6f;
+  --flying: #a793ec;
+  --psychic: #f65887;
+  --bug: #a9b637;
+  --rock: #b89f43;
+  --ghost: #6f5a96;
+  --dark: #705849;
+  --dragon: #6f43f3;
+  --steel: #b8b8cf;
+  --fairy: #efb6bc;
 }
 
 .bg_water {

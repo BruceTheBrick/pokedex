@@ -8,7 +8,7 @@ const PokemonItem = ({ pokemon, navigation }) => {
       onClick={() => {
         navigation.navigate("Details", { pokemon });
       }}
-      className={"list-item " + ("bg_" + pokemon.types[0])}
+      className={"list-item bg_" + pokemon.types[0]}
     >
       <div className="header">
         <div className="name">{pokemon.name}</div>

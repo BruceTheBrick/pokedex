@@ -4,6 +4,12 @@ class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isSpinning: true };
+    this.setPrimaryColor(props.route.params.pokemon.types[0]);
+  }
+
+  setPrimaryColor(primaryColor) {
+    console.log(primaryColor);
+    document.documentElement.style.setProperty("--color-pkm-primary", primaryColor);
   }
 
   updateSpin = () => {
@@ -20,7 +26,7 @@ class Detail extends React.Component {
         <button className="btn return" onClick={() => this.props.navigation.goBack()}>
           <div className="arrow">&#10147;</div> Return
         </button>
-        <div className={"bg_curved " + ("bg_" + pokemon.types[0])}></div>
+        <div className="bg_curved"></div>
         <div className="pokemon">
           <div className={"pokemon-img " + (this.state.isSpinning ? "spin-3d" : "")}>
             <img src={pokemon.imgURL} alt={"Sprite of " + pokemon} />
