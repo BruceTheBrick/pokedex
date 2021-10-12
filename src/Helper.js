@@ -1,4 +1,4 @@
-function convertTypeToColor(type) {
+export const convertTypeToColor = (type) => {
   switch (type.toLowerCase()) {
     case "normal": {
       return getComputedStyle(document.documentElement).getPropertyValue("--normal");
@@ -57,4 +57,4 @@ function convertTypeToColor(type) {
     default: {
     }
   }
-}
+};

@@ -1,22 +1,35 @@
 import React from "react";
 import "./Detail.css";
+
+import Switch from "./Switch";
+import { convertTypeToColor } from "../Helper";
 class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isSpinning: true };
-    this.setPrimaryColor(props.route.params.pokemon.types[0]);
+    this.setPageColors(this.props.route.params.pokemon);
   }
 
-  setPrimaryColor(primaryColor) {
-    console.log(primaryColor);
-    document.documentElement.style.setProperty("--color-pkm-primary", primaryColor);
+  setPageColors(pokemon) {
+    console.log(pokemon);
+    if (pokemon.types?.[0]) {
+      this.setVariableValue("--page-color-primary", pokemon.types[0]);
+      if (pokemon.types?.[1]) {
+        this.setVariableValue("--page-color-secondary", pokemon.types[1]);
+      } else {
+        this.setVariableValue("--page-color-secondary", pokemon.types[0]);
+      }
+    }
+  }
+
+  setVariableValue(variableName, value) {
+    document.documentElement.style.setProperty(variableName, convertTypeToColor(value));
   }
 
   updateSpin = () => {
     this.setState({
       isSpinning: !this.state.isSpinning,
     });
-    console.log(this.state.isSpinning);
   };
 
   render() {
@@ -35,7 +48,11 @@ class Detail extends React.Component {
         </div>
 
         <div>
-          <input type="checkbox" name="isSpinning" id="isSpinning" onClick={this.updateSpin} />
+          {/* <input type="checkbox" name="isSpinning" id="isSpinning" onClick={this.updateSpin} /> */}
+          <label className="switch-label" htmlFor="switch">
+            Disable Spin Animation
+          </label>
+          <Switch id="switch" onChange={this.updateSpin} />
         </div>
       </div>
     );

@@ -1,3 +1,7 @@
+:root {
+  --header-gradient: radial-gradient(circle, var(--page-color-primary) 30%, var(--page-color-secondary) 100%);
+}
+
 .content {
   min-height: 100vh;
 }
@@ -7,12 +11,18 @@
   width: 200vw;
   height: 100vw;
 
-  background-color: var(--color-pkm-primary);
+  /* background-color: var(--page-color-primary); */
+  background: var(--header-gradient);
   border-radius: 50%;
   transform: translateY(-50vw) translateX(-50vw);
   box-shadow: 3px 3px 5px #3d3d3d;
+
+  z-index: -1;
 }
 
+.switch-label {
+  font-size: 0.25em;
+}
 .pokemon {
   display: flex;
   justify-content: center;
@@ -26,8 +36,6 @@
 }
 
 .sprite-shadow {
-  position: absolute;
-  content: "";
   width: 100%;
   height: 15%;
   border-radius: 50%;
