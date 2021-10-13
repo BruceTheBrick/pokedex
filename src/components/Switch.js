@@ -1,11 +1,26 @@
 import "./Switch.css";
-const Switch = ({ onChange }) => {
-  return (
-    <label className="switch">
-      <input type="checkbox" onChange={onChange} />
-      <span className="slider round"></span>
-    </label>
-  );
-};
+import React, { Component } from "react";
 
-export default Switch;
+export default class Switch extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  propagateChange(value) {
+    this.props.changeHandler(value);
+  }
+
+  render() {
+    return (
+      <label className="switch">
+        <input
+          type="checkbox"
+          onChange={(e) => {
+            this.propagateChange(e.target.checked);
+          }}
+        />
+        <span className="slider round"></span>
+      </label>
+    );
+  }
+}

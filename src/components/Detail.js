@@ -11,7 +11,6 @@ class Detail extends React.Component {
   }
 
   setPageColors(pokemon) {
-    console.log(pokemon);
     if (pokemon.types?.[0]) {
       this.setVariableValue("--page-color-primary", pokemon.types[0]);
       if (pokemon.types?.[1]) {
@@ -26,9 +25,10 @@ class Detail extends React.Component {
     document.documentElement.style.setProperty(variableName, convertTypeToColor(value));
   }
 
-  updateSpin = () => {
+  updateSpin = (val) => {
+    console.log(val);
     this.setState({
-      isSpinning: !this.state.isSpinning,
+      isSpinning: val,
     });
   };
 
@@ -46,13 +46,11 @@ class Detail extends React.Component {
             <div className="sprite-shadow"></div>
           </div>
         </div>
-
         <div>
-          {/* <input type="checkbox" name="isSpinning" id="isSpinning" onClick={this.updateSpin} /> */}
           <label className="switch-label" htmlFor="switch">
             Disable Spin Animation
           </label>
-          <Switch id="switch" onChange={this.updateSpin} />
+          <Switch id="switch" changeHandler={this.updateSpin} />
         </div>
       </div>
     );
