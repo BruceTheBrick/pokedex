@@ -28,7 +28,7 @@ class PokemonItem extends Component {
         </div>
         <div className="body">
           <div className="types">
-            {pokemon.types.map((type, index) => {
+            {pokemon.types.map((type) => {
               return (
                 <div key={type} className="type">
                   {type}
