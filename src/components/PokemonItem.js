@@ -28,8 +28,12 @@ class PokemonItem extends Component {
         </div>
         <div className="body">
           <div className="types">
-            {pokemon.types.map((type) => {
-              return <div className="type">{type}</div>;
+            {pokemon.types.map((type, index) => {
+              return (
+                <div key={type} className="type">
+                  {type}
+                </div>
+              );
             })}
           </div>
           <div className="sprite">
