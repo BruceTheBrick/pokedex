@@ -1,7 +1,6 @@
 import "./App.css";
 
 import * as React from "react";
-// import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -76,13 +75,17 @@ const pokies = [
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/890.png",
   },
 ];
+
 const Stack = createNativeStackNavigator();
+
 function HomeScreen({ navigation }) {
   return <List list={pokies} navigation={navigation} />;
 }
+
 function DetailScreen({ route, navigation }) {
   return <Detail navigation={navigation} route={route} />;
 }
+
 function App() {
   return (
     <NavigationContainer>

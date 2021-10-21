@@ -3,11 +3,14 @@ import "./Detail.css";
 
 import Switch from "./Switch";
 import { convertTypeToColor } from "../Helper";
+
 class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isSpinning: true };
     this.setPageColors(this.props.route.params.pokemon);
+
+    this.changeHandler = this.changeHandler.bind(this);
   }
 
   setPageColors(pokemon) {
@@ -25,15 +28,18 @@ class Detail extends React.Component {
     document.documentElement.style.setProperty(variableName, convertTypeToColor(value));
   }
 
-  updateSpin = (val) => {
-    console.log(val);
-    this.setState({
-      isSpinning: val,
-    });
-  };
+  changeHandler(isSpinning) {
+    this.setState({ isSpinning: isSpinning });
+  }
+
+  getSpinningState() {
+    return this.state.isSpinning;
+  }
 
   render() {
     const { pokemon } = this.props.route.params;
+    const spinState = this.getSpinningState();
+
     return (
       <div className="content">
         <button className="btn return" onClick={() => this.props.navigation.goBack()}>
@@ -48,9 +54,9 @@ class Detail extends React.Component {
         </div>
         <div>
           <label className="switch-label" htmlFor="switch">
-            Disable Spin Animation
+            Enable Spin Animation
           </label>
-          <Switch id="switch" changeHandler={this.updateSpin} />
+          <Switch id="switch" isChecked={spinState} changeHandler={this.changeHandler} />
         </div>
       </div>
     );
