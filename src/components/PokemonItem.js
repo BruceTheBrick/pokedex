@@ -3,7 +3,7 @@ import PkBall from "../assets/pkball-icon.png";
 
 import React, { Component } from "react";
 
-export default class PokemonItem extends Component {
+class PokemonItem extends Component {
   getId(id) {
     let res = "";
     res += id;
@@ -44,6 +44,7 @@ export default class PokemonItem extends Component {
   }
 }
 
+export default PokemonItem;
 PokemonItem.defaultProps = {
   pokemon: {
     id: 0,
