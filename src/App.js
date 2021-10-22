@@ -1,9 +1,7 @@
 import "./App.css";
 
 import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import { Switch, Route } from "react-router-dom";
 import List from "./components/List";
 import Detail from "./components/Detail";
 
@@ -76,24 +74,19 @@ const pokies = [
   },
 ];
 
-const Stack = createNativeStackNavigator();
-
-function HomeScreen({ navigation }) {
-  return <List list={pokies} navigation={navigation} />;
-}
-
-function DetailScreen({ route, navigation }) {
-  return <Detail navigation={navigation} route={route} />;
-}
-
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Switch>
+      <Route
+        path="/"
+        component={() => {
+          return <List list={pokies} />;
+        }}
+        title="Pokedex"
+        exact
+      />
+      <Route path="/PokemonDetails" component={Detail} title="Pokedex | Details" />
+    </Switch>
   );
 }
 

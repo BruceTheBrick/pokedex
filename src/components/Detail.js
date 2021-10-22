@@ -8,9 +8,13 @@ class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isSpinning: true };
-    this.setPageColors(this.props.route.params.pokemon);
+    console.log(this.props);
 
     this.changeHandler = this.changeHandler.bind(this);
+    this.spinState = this.getSpinningState();
+    this.pokemon = this.props.location.state;
+
+    this.setPageColors(this.pokemon);
   }
 
   setPageColors(pokemon) {
@@ -37,18 +41,15 @@ class Detail extends React.Component {
   }
 
   render() {
-    const { pokemon } = this.props.route.params;
-    const spinState = this.getSpinningState();
-
     return (
       <div className="content">
-        <button className="btn return" onClick={() => this.props.navigation.goBack()}>
+        <button className="btn return" onClick={() => this.props.history.goBack()}>
           <div className="arrow">&#10147;</div> Return
         </button>
         <div className="bg_curved"></div>
         <div className="pokemon">
           <div className={"pokemon-img " + (this.state.isSpinning ? "spin-3d" : "")}>
-            <img src={pokemon.imgURL} alt={"Sprite of " + pokemon} />
+            <img src={this.pokemon.imgURL} alt={"Sprite of " + this.pokemon} />
             <div className="sprite-shadow"></div>
           </div>
         </div>
@@ -56,7 +57,7 @@ class Detail extends React.Component {
           <label className="switch-label" htmlFor="switch">
             Enable Spin Animation
           </label>
-          <Switch id="switch" isChecked={spinState} changeHandler={this.changeHandler} />
+          <Switch id="switch" isChecked={this.spinState} changeHandler={this.changeHandler} />
         </div>
       </div>
     );

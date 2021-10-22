@@ -2,7 +2,6 @@ import "./PokemonItem.css";
 import PkBall from "../assets/pkball-icon.png";
 
 import React, { Component } from "react";
-
 class PokemonItem extends Component {
   getId(id) {
     let res = "";
@@ -14,14 +13,9 @@ class PokemonItem extends Component {
   }
 
   render() {
-    const { pokemon, navigation } = this.props;
+    const { pokemon } = this.props;
     return (
-      <div
-        onClick={() => {
-          navigation.navigate("Details", { pokemon });
-        }}
-        className={"list-item bg_" + pokemon.types[0]}
-      >
+      <div className={"list-item bg_" + pokemon.types[0]}>
         <div className="header">
           <div className="name">{pokemon.name}</div>
           <div className="id">#{this.getId(pokemon.id)}</div>
@@ -48,7 +42,6 @@ class PokemonItem extends Component {
   }
 }
 
-export default PokemonItem;
 PokemonItem.defaultProps = {
   pokemon: {
     id: 0,
@@ -56,3 +49,5 @@ PokemonItem.defaultProps = {
     types: ["NaN"],
   },
 };
+
+export default PokemonItem;
