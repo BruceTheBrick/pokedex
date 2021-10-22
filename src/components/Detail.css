@@ -2,15 +2,6 @@
   --header-gradient: radial-gradient(circle, var(--page-color-primary) 30%, var(--page-color-secondary) 100%);
 }
 
-body {
-  width: 100vw;
-  overflow-x: hidden;
-}
-
-.content {
-  min-height: 100vh;
-}
-
 .bg_curved {
   position: absolute;
   width: 200vw;

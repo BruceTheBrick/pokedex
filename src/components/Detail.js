@@ -4,7 +4,6 @@ import "./Detail.css";
 import Switch from "./Switch";
 import { convertTypeToColor } from "../Helper";
 import ReturnBtn from "./ReturnBtn";
-
 class Detail extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +11,7 @@ class Detail extends React.Component {
 
     this.changeHandler = this.changeHandler.bind(this);
     this.spinState = this.getSpinningState();
-    this.pokemon = this.props.location.state;
+    this.pokemon = this.props.pokemon;
 
     this.setPageColors(this.pokemon);
   }

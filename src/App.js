@@ -2,8 +2,9 @@ import "./App.css";
 
 import * as React from "react";
 import { Switch, Route } from "react-router-dom";
-import List from "./components/List";
-import Detail from "./components/Detail";
+
+import Homepage from "./pages/Homepage";
+import Detail from "./pages/PokemonDetail";
 
 const pokies = [
   {
@@ -80,12 +81,12 @@ function App() {
       <Route
         path="/"
         component={() => {
-          return <List list={pokies} />;
+          return <Homepage list={pokies} />;
         }}
-        title="Pokedex"
         exact
       />
-      <Route path="/PokemonDetails" component={Detail} title="Pokedex | Details" />
+
+      <Route path="/PokemonDetails" component={Detail} />
     </Switch>
   );
 }
