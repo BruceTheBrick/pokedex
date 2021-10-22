@@ -16,7 +16,6 @@ body {
   width: 200vw;
   height: 100vw;
 
-  /* background-color: var(--page-color-primary); */
   background: var(--header-gradient);
   border-radius: 50%;
   transform: translateY(-50vw) translateX(-50vw);

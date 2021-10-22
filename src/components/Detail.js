@@ -3,12 +3,12 @@ import "./Detail.css";
 
 import Switch from "./Switch";
 import { convertTypeToColor } from "../Helper";
+import ReturnBtn from "./ReturnBtn";
 
 class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isSpinning: true };
-    console.log(this.props);
 
     this.changeHandler = this.changeHandler.bind(this);
     this.spinState = this.getSpinningState();
@@ -43,9 +43,7 @@ class Detail extends React.Component {
   render() {
     return (
       <div className="content">
-        <button className="btn return" onClick={() => this.props.history.goBack()}>
-          <div className="arrow">&#10147;</div> Return
-        </button>
+        <ReturnBtn history={this.props.history} />
         <div className="bg_curved"></div>
         <div className="pokemon">
           <div className={"pokemon-img " + (this.state.isSpinning ? "spin-3d" : "")}>

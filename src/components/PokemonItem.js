@@ -2,6 +2,7 @@ import "./PokemonItem.css";
 import PkBall from "../assets/pkball-icon.png";
 
 import React, { Component } from "react";
+
 class PokemonItem extends Component {
   getId(id) {
     let res = "";
