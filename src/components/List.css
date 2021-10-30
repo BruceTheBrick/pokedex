@@ -7,7 +7,7 @@
 .list > * {
   margin-bottom: var(--space-base);
   max-width: 400px;
-  min-width: 80%;
+  min-width: 90%;
 }
 
 .list a {
