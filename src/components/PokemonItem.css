@@ -9,7 +9,6 @@
 }
 
 .list-item:hover {
-  /* opacity: 0.8; */
   transform: scale(1.05);
 }
 
@@ -44,6 +43,8 @@
 
   bottom: 0;
   right: 0;
+
+  overflow: hidden;
 
   transform: translate(25%, 35%);
 }
