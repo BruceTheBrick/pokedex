@@ -11,6 +11,16 @@ export default class Page extends Component {
     this.heading = props.heading;
   }
 
+  getImage() {
+    if (this.props.image) {
+      return (
+        <div className="page-img">
+          <img src={this.props.image} alt={this.props.image_alt} />
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <>
@@ -18,8 +28,9 @@ export default class Page extends Component {
           <title>{this.props.title}</title>
         </Helmet>
         <div className="content">
+          {this.getImage()}
+          <PageTitle>{this.props.heading}</PageTitle>
           <div className="main">
-            <PageTitle>{this.props.heading}</PageTitle>
             <div className="page-body">{this.props.children}</div>
           </div>
         </div>

@@ -1,10 +1,16 @@
 .content {
   min-height: 100vh;
   padding: 2rem 2rem;
-
   background: var(--color-background);
 }
 
+.page-img {
+  padding: var(--space-base);
+  text-align: center;
+}
+.page-img img {
+  max-width: 80%;
+}
 .page-title {
   position: relative;
 

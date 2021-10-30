@@ -8,6 +8,7 @@
 }
 
 :root {
+  --pokedex-red: #df4b43;
   --red: lightcoral;
   --red-darker: rgb(235, 95, 95);
 
@@ -35,16 +36,63 @@
   --dragon: #6f43f3;
   --steel: #b8b8cf;
   --fairy: #efb6bc;
+
+  --space-base: 1rem;
+
+  --border-radius-soft: 1rem;
 }
 
-.bg_water {
-  background: var(--blue);
+.bg_normal {
+  background: var(--normal);
 }
-
 .bg_fire {
   background: var(--red);
 }
-
+.bg_water {
+  background: var(--blue);
+}
 .bg_grass {
   background: var(--green);
+}
+.bg_electric {
+  background: var(--electric);
+}
+.bg_ice {
+  background: var(--ice);
+}
+.bg_fighting {
+  background: var(--fighting);
+}
+.bg_poison {
+  background: var(--poison);
+}
+.bg_ground {
+  background: var(--ground);
+}
+.bg_flying {
+  background: var(--flying);
+}
+.bg_psychic {
+  background: var(--psychic);
+}
+.bg_bug {
+  background: var(--bug);
+}
+.bg_rock {
+  background: var(--rock);
+}
+.bg_ghost {
+  background: var(--ghost);
+}
+.bg_dark {
+  background: var(--dark);
+}
+.bg_dragon {
+  background: var(--dragon);
+}
+.bg_steel {
+  background: var(--steel);
+}
+.bg_fairy {
+  background: var(--fairy);
 }

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import "../styles/Homepage.css";
 import Page from "./Page";
 import List from "../components/List";
+import PokeDexLogo from "../assets/PokeDex.png";
 
 export default class Homepage extends Component {
   constructor(props) {
@@ -10,7 +12,7 @@ export default class Homepage extends Component {
   }
   render() {
     return (
-      <Page title="Pokedex">
+      <Page title="Pokedex" image={PokeDexLogo} image_alt={"PokeDex"}>
         <List list={this.list} />
       </Page>
     );
