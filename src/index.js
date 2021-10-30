@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./styles/index.css";
 import "./styles/fonts.css";
 import "./styles/utilities.css";
+import "./styles/animations.css";
 
 ReactDOM.render(
   <BrowserRouter>

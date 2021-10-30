@@ -14,7 +14,7 @@ export default class Page extends Component {
   getImage() {
     if (this.props.image) {
       return (
-        <div className="page-img">
+        <div className="page-img wobble">
           <img src={this.props.image} alt={this.props.image_alt} />
         </div>
       );
