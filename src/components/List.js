@@ -4,10 +4,6 @@ import PokemonItem from "./PokemonItem";
 import React from "react";
 import { NavLink } from "react-router-dom";
 export default class List extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { list } = this.props;
     return (
