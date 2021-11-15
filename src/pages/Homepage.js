@@ -18,19 +18,22 @@ export default class Homepage extends Component {
       cacheImages: true,
       limit: 10,
     };
-    this.test = "MY TEST!";
     this.pokedex = new PokeDexAPI.Pokedex(options);
     this.pokemonUpdated = this.pokemonUpdated.bind(this);
+
+    this.state = {
+      list: "",
+    };
   }
 
   pokemonUpdated(newList) {
-    this.list = newList;
-    this.render();
+    this.setState({ list: newList });
   }
+
   render() {
     return (
       <Page title="Pokedex" image={PokeDexLogo} image_alt={"PokeDex"}>
-        <List list={this.list} />
+        <List list={this.state.list} pokedex={this.pokedex} />
         <Pagination limit={10} startIndex={0} listUpdated={this.pokemonUpdated} pokedex={this.pokedex}></Pagination>
       </Page>
     );

@@ -4,9 +4,20 @@ import PkBall from "../assets/pkball-icon.png";
 import React, { Component } from "react";
 
 class PokemonItem extends Component {
-  getId(id) {
+  constructor(props) {
+    super(props);
+
+    this.getPokemonInfo();
+  }
+
+  async getPokemonInfo() {
+    this.details = await this.props.pokedex.getPokemonByName(this.props.pokemon.name);
+    console.log(this.details);
+  }
+
+  getId() {
     let res = "";
-    res += id;
+    res += this.details.id;
     while (res.length < 3) {
       res = "0" + res;
     }
@@ -15,15 +26,17 @@ class PokemonItem extends Component {
 
   render() {
     const { pokemon } = this.props;
+    console.log(pokemon);
     return (
-      <div className={"list-item bg_" + pokemon.types[0]}>
+      <div className={"list-item bg_" + this?.details?.types[0]}>
+        {/* <div className={"list-item"}> */}
         <div className="header">
           <div className="name">{pokemon.name}</div>
-          <div className="id">#{this.getId(pokemon.id)}</div>
+          <div className="id">#{this.getId()}</div>
         </div>
         <div className="body">
           <div className="types">
-            {pokemon.types.map((type) => {
+            {this?.details?.types.map((type) => {
               return (
                 <div key={type} className="type">
                   {type}

@@ -25,6 +25,7 @@
 
 .header .name {
   font-weight: bolder;
+  text-transform: capitalize;
 }
 
 .header .id {
