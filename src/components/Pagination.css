@@ -1,0 +1,6 @@
+.pagination-parent {
+  display: flex;
+  padding: var(--space-base);
+  justify-content: space-between;
+  font-size: 2rem;
+}
