@@ -12,12 +12,12 @@ class PokemonItem extends Component {
 
   async getPokemonInfo() {
     this.details = await this.props.pokedex.getPokemonByName(this.props.pokemon.name);
-    console.log(this.details);
   }
 
   getId() {
     let res = "";
-    res += this.details.id;
+    let id = this?.details?.id || 0;
+    res += id;
     while (res.length < 3) {
       res = "0" + res;
     }
@@ -29,7 +29,6 @@ class PokemonItem extends Component {
     console.log(pokemon);
     return (
       <div className={"list-item bg_" + this?.details?.types[0]}>
-        {/* <div className={"list-item"}> */}
         <div className="header">
           <div className="name">{pokemon.name}</div>
           <div className="id">#{this.getId()}</div>

@@ -92,7 +92,8 @@ function App() {
       <Route
         path="/"
         component={() => {
-          return <Homepage pokedex={pokedex} list={pokies} />;
+          // return <Homepage pokedex={pokedex} list={pokies} />;
+          return <Homepage pokedex={pokedex} />;
         }}
         exact
       />

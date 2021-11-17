@@ -6,28 +6,21 @@ import { NavLink } from "react-router-dom";
 export default class List extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      list: props.list,
-    };
-    this.list = props.list;
     this.pokedex = props.pokedex;
   }
 
-  componentDidMount() {
-    this.render();
-  }
-
   componentDidUpdate(props) {
-    this.list = props.list;
-    this.render();
+    // this.setState = { list: props.list };
+    this.setState = { list: this.props.list };
+    console.log(this.state);
   }
 
   render() {
-    const tempList = this.list;
-    if (tempList.length > 0) {
+    const tempList = this?.state?.list;
+    if (tempList && tempList.length > 0) {
       return (
         <div className="list">
-          {this.list.map((pokemon) => (
+          {tempList.map((pokemon) => (
             <NavLink
               to={{
                 pathname: "/PokemonDetails",
@@ -41,7 +34,7 @@ export default class List extends React.Component {
         </div>
       );
     } else {
-      return <div>This list is empty.</div>;
+      return <div>This list is empty!</div>;
     }
   }
 }

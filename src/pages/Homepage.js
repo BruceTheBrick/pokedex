@@ -7,6 +7,7 @@ import Pagination from "../components/Pagination";
 
 import PokemonItem from "../components/PokemonItem";
 import { NavLink } from "react-router-dom";
+import { isThisTypeNode } from "typescript";
 
 const PokeDexAPI = require("pokeapi-js-wrapper");
 
@@ -47,25 +48,34 @@ export default class Homepage extends Component {
   }
 
   render() {
-    console.log(this?.state?.list);
-    return (
-      <Page title="Pokedex" image={PokeDexLogo} image_alt={"PokeDex"}>
-        <button onClick={this.getNext}>Get Next</button>
-        {this?.state?.list.map((pokemon) => {
-          console.log(pokemon);
-          <NavLink
-            to={{
-              pathname: "/PokemonDetails",
-              state: pokemon,
-            }}
-            key={pokemon.id}
-          >
-            <PokemonItem pokemon={pokemon} pokedex={this.pokedex} />
-          </NavLink>;
-        })}
-        {/* <List list={this?.state?.list} pokedex={this.pokedex} /> */}
-        {/* <Pagination limit={10} startIndex={0} listUpdated={this.pokemonUpdated} pokedex={this.pokedex}></Pagination> */}
-      </Page>
-    );
+    if (this?.state?.list && this.state.list.length > 0) {
+      return (
+        <Page title="Pokedex" image={PokeDexLogo} image_alt={"PokeDex"}>
+          <button onClick={this.getNext}>Get Next</button>
+          {this?.state?.list.map((pokemon) => {
+            return (
+              <NavLink
+                to={{
+                  pathname: "/PokemonDetails",
+                  state: pokemon,
+                }}
+                key={pokemon.id}
+              >
+                <PokemonItem pokemon={pokemon} pokedex={this.pokedex} />
+              </NavLink>
+            );
+          })}
+          {/* <List list={this?.state?.list} pokedex={this.pokedex} />  */}
+          {/* <Pagination limit={10} startIndex={0} listUpdated={this.pokemonUpdated} pokedex={this.pokedex}></Pagination> */}
+        </Page>
+      );
+    } else {
+      return (
+        <>
+          <button onClick={this.getNext}>Get Next</button>
+          <div>Empty</div>
+        </>
+      );
+    }
   }
 }
