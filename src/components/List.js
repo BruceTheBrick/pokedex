@@ -7,24 +7,36 @@ export default class List extends React.Component {
   constructor(props) {
     super(props);
     this.pokedex = props.pokedex;
+    this.state = { list: props.list };
+
+    this.getList = this.getList.bind(this);
   }
 
-  componentDidUpdate() {
-    this.setState = { list: this.props.list };
+  componentDidUpdate(previousProps) {
+    console.log(previousProps);
+    if (previousProps.list !== this.props.list) {
+      // this.setState = { list: this.props.list };
+      this.state.list = this.props.list;
+    }
+  }
+
+  getList() {
+    return this.state.list;
   }
 
   render() {
-    const tempList = this?.state?.list;
-    if (tempList && tempList.length > 0) {
+    console.log("Re-rendering");
+    console.log(this.getList());
+    if (this?.state?.list && this.state.list.length > 0) {
       return (
         <div className="list">
-          {tempList.map((pokemon) => (
+          {this.getList().map((pokemon) => (
             <NavLink
               to={{
                 pathname: "/PokemonDetails",
                 state: pokemon,
               }}
-              key={pokemon.id}
+              key={pokemon.name}
             >
               <PokemonItem pokemon={pokemon} pokedex={this.pokedex} />
             </NavLink>

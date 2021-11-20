@@ -6,6 +6,8 @@ import PokeDexLogo from "../assets/PokeDex.png";
 import PokemonItem from "../components/PokemonItem";
 import { NavLink } from "react-router-dom";
 
+import List from "../components/List";
+
 const PokeDexAPI = require("pokeapi-js-wrapper");
 
 export default class Homepage extends Component {
@@ -20,7 +22,6 @@ export default class Homepage extends Component {
       limit: 10,
     };
     this.pokedex = new PokeDexAPI.Pokedex(options);
-    this.pokemonUpdated = this.pokemonUpdated.bind(this);
 
     this.startIndex = 0;
     this.limit = 10;
@@ -28,6 +29,8 @@ export default class Homepage extends Component {
 
     this.getNext = this.getNext.bind(this);
     this.getPrev = this.getPrev.bind(this);
+    this.pokemonUpdated = this.pokemonUpdated.bind(this);
+    this.getNext();
   }
 
   async getNext() {
@@ -54,24 +57,11 @@ export default class Homepage extends Component {
 
   render() {
     if (this?.state?.list && this.state.list.length > 0) {
-      console.log(this.state.list);
       return (
         <Page title="Pokedex" image={PokeDexLogo} image_alt={"PokeDex"}>
           <button onClick={this.getPrev}>Get Prev</button>
           <button onClick={this.getNext}>Get Next</button>
-          {this.state.list.map((pokemon) => {
-            return (
-              <NavLink
-                to={{
-                  pathname: "/PokemonDetails",
-                  state: pokemon,
-                }}
-                key={pokemon.name}
-              >
-                <PokemonItem pokemon={pokemon} pokedex={this.pokedex} />
-              </NavLink>
-            );
-          })}
+          <List list={this.state.list} pokedex={this.pokedex}></List>
         </Page>
       );
     } else {
