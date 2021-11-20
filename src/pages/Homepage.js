@@ -3,9 +3,6 @@ import "../styles/Homepage.css";
 import Page from "./Page";
 import PokeDexLogo from "../assets/PokeDex.png";
 
-import PokemonItem from "../components/PokemonItem";
-import { NavLink } from "react-router-dom";
-
 import List from "../components/List";
 
 const PokeDexAPI = require("pokeapi-js-wrapper");
@@ -30,12 +27,17 @@ export default class Homepage extends Component {
     this.getNext = this.getNext.bind(this);
     this.getPrev = this.getPrev.bind(this);
     this.pokemonUpdated = this.pokemonUpdated.bind(this);
-    this.getNext();
+    this.initList();
+  }
+
+  async initList() {
+    let newList = await this.pokedex.getPokemonsList({ offset: this.startIndex, limit: this.limit });
+    this.setState({ list: newList.results });
   }
 
   async getNext() {
-    let newList = await this.pokedex.getPokemonsList({ offset: this.startIndex, limit: this.limit });
     this.startIndex += this.limit;
+    let newList = await this.pokedex.getPokemonsList({ offset: this.startIndex, limit: this.limit });
     this.setState({ list: newList.results });
   }
 
@@ -59,9 +61,15 @@ export default class Homepage extends Component {
     if (this?.state?.list && this.state.list.length > 0) {
       return (
         <Page title="Pokedex" image={PokeDexLogo} image_alt={"PokeDex"}>
-          <button onClick={this.getPrev}>Get Prev</button>
-          <button onClick={this.getNext}>Get Next</button>
           <List list={this.state.list} pokedex={this.pokedex}></List>
+          <div className="list_nav">
+            <button onClick={this.getPrev} className="btn">
+              &larr;
+            </button>
+            <button onClick={this.getNext} className="btn">
+              &rarr;
+            </button>
+          </div>
         </Page>
       );
     } else {

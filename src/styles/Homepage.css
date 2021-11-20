@@ -7,3 +7,8 @@
   padding: var(--space-base);
   border-radius: var(--border-radius-soft);
 }
+
+.list_nav {
+  display: flex;
+  justify-content: space-between;
+}

@@ -13,10 +13,8 @@ export default class List extends React.Component {
   }
 
   componentDidUpdate(previousProps) {
-    console.log(previousProps);
-    if (previousProps.list !== this.props.list) {
-      // this.setState = { list: this.props.list };
-      this.state.list = this.props.list;
+    if (previousProps.list !== this.props.list || previousProps.list == null) {
+      this.setState({ list: this.props.list });
     }
   }
 
@@ -25,8 +23,6 @@ export default class List extends React.Component {
   }
 
   render() {
-    console.log("Re-rendering");
-    console.log(this.getList());
     if (this?.state?.list && this.state.list.length > 0) {
       return (
         <div className="list">
