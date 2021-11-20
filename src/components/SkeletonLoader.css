@@ -1,0 +1,28 @@
+.skele_loader_parent {
+  min-height: 100px;
+  border: 2px solid black;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.skele_loader_parent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 20%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(207, 207, 207, 1) 50%, rgba(255, 255, 255, 0) 99%);
+
+  animation: slide 800ms ease-in-out infinite forwards;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}

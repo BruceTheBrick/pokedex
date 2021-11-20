@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import "../styles/Homepage.css";
 import Page from "./Page";
-import List from "../components/List";
 import PokeDexLogo from "../assets/PokeDex.png";
-import Pagination from "../components/Pagination";
 
 import PokemonItem from "../components/PokemonItem";
 import { NavLink } from "react-router-dom";
-import { isThisTypeNode } from "typescript";
 
 const PokeDexAPI = require("pokeapi-js-wrapper");
 
@@ -30,11 +27,7 @@ export default class Homepage extends Component {
     this.totalCount = 0;
 
     this.getNext = this.getNext.bind(this);
-  }
-
-  componentDidUpdate() {
-    console.log("Homepage updating");
-    console.log(this.state);
+    this.getPrev = this.getPrev.bind(this);
   }
 
   async getNext() {
@@ -43,30 +36,42 @@ export default class Homepage extends Component {
     this.setState({ list: newList.results });
   }
 
+  async getPrev() {
+    if (this.startIndex > 0) {
+      this.startIndex -= this.limit;
+      let newList = await this.pokedex.getPokemonsList({ offset: this.startIndex, limit: this.limit });
+      this.setState({ list: newList.results });
+    }
+  }
+
+  getCurrentList() {
+    return this.state.list;
+  }
+
   pokemonUpdated(newList) {
     this.setState({ list: newList });
   }
 
   render() {
     if (this?.state?.list && this.state.list.length > 0) {
+      console.log(this.state.list);
       return (
         <Page title="Pokedex" image={PokeDexLogo} image_alt={"PokeDex"}>
+          <button onClick={this.getPrev}>Get Prev</button>
           <button onClick={this.getNext}>Get Next</button>
-          {this?.state?.list.map((pokemon) => {
+          {this.state.list.map((pokemon) => {
             return (
               <NavLink
                 to={{
                   pathname: "/PokemonDetails",
                   state: pokemon,
                 }}
-                key={pokemon.id}
+                key={pokemon.name}
               >
                 <PokemonItem pokemon={pokemon} pokedex={this.pokedex} />
               </NavLink>
             );
           })}
-          {/* <List list={this?.state?.list} pokedex={this.pokedex} />  */}
-          {/* <Pagination limit={10} startIndex={0} listUpdated={this.pokemonUpdated} pokedex={this.pokedex}></Pagination> */}
         </Page>
       );
     } else {

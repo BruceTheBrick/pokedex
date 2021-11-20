@@ -92,3 +92,7 @@
 .bg_fairy {
   background: var(--fairy);
 }
+
+a {
+  all: unset;
+}

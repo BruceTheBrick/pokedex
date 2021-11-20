@@ -9,10 +9,8 @@ export default class List extends React.Component {
     this.pokedex = props.pokedex;
   }
 
-  componentDidUpdate(props) {
-    // this.setState = { list: props.list };
+  componentDidUpdate() {
     this.setState = { list: this.props.list };
-    console.log(this.state);
   }
 
   render() {
