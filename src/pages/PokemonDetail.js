@@ -6,7 +6,7 @@ export default class PokemonDetail extends Component {
   render() {
     return (
       <Page title={"Pokedex | Details"}>
-        <Detail pokemon={this.props.location.state} history={this.props.history}></Detail>
+        <Detail pokemon={this.props.location.state.pokemon} pokedex={this.props.location.state.pokedex} history={this.props.history}></Detail>
       </Page>
     );
   }

@@ -7,17 +7,22 @@ import ReturnBtn from "./ReturnBtn";
 class Detail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isSpinning: true };
+    console.log(props);
+    // this.state = { isSpinning: true };
 
     this.changeHandler = this.changeHandler.bind(this);
     this.spinState = this.getSpinningState();
-    this.pokemon = this.props.pokemon;
+    this.pokemon = props.pokemon;
+    this.pokedex = props.pokedex;
+
+    this.getSpinningState = this.getSpinningState.bind(this);
 
     this.setPageColors(this.pokemon);
+    // this.getPokemonInfo();
   }
 
   setPageColors(pokemon) {
-    if (pokemon.types?.[0]) {
+    if (pokemon?.types?.[0]) {
       this.setVariableValue("--page-color-primary", pokemon.types[0]);
       if (pokemon.types?.[1]) {
         this.setVariableValue("--page-color-secondary", pokemon.types[1]);
@@ -35,8 +40,13 @@ class Detail extends React.Component {
     this.setState({ isSpinning: isSpinning });
   }
 
+  async getPokemonInfo() {
+    this.setState({ details: await this.pokedex.getPokemonByName(this.pokemon.name) });
+  }
+
   getSpinningState() {
-    return this.state.isSpinning;
+    // return this.state.isSpinning;
+    return true;
   }
 
   render() {
@@ -45,7 +55,7 @@ class Detail extends React.Component {
         <ReturnBtn history={this.props.history} />
         <div className="bg_curved"></div>
         <div className="pokemon">
-          <div className={"pokemon-img " + (this.state.isSpinning ? "spin-3d" : "")}>
+          <div className={"pokemon-img " + (this.getSpinningState ? "spin-3d" : "")}>
             <img src={this.pokemon.imgURL} alt={"Sprite of " + this.pokemon} />
             <div className="sprite-shadow"></div>
           </div>

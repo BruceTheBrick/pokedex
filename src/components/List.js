@@ -10,6 +10,7 @@ export default class List extends React.Component {
     this.state = { list: props.list };
 
     this.getList = this.getList.bind(this);
+    this.getPokedex = this.getPokedex.bind(this);
   }
 
   componentDidUpdate(previousProps) {
@@ -22,6 +23,10 @@ export default class List extends React.Component {
     return this.state.list;
   }
 
+  getPokedex() {
+    return this.pokedex;
+  }
+
   render() {
     if (this?.state?.list && this.state.list.length > 0) {
       return (
@@ -30,8 +35,12 @@ export default class List extends React.Component {
             <NavLink
               to={{
                 pathname: "/PokemonDetails",
-                state: pokemon,
+                state: {
+                  pokemon: pokemon,
+                  // pokedex: this.pokedex,
+                },
               }}
+              pokedex={this.pokedex}
               key={pokemon.name}
             >
               <PokemonItem pokemon={pokemon} pokedex={this.pokedex} />
