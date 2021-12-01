@@ -1,9 +1,11 @@
 .skele_loader_parent {
-  min-height: 100px;
+  min-height: 140px;
   border: 2px solid black;
   height: 100%;
   position: relative;
   overflow: hidden;
+
+  border-radius: var(--border-radius-soft);
 }
 
 .skele_loader_parent::before {

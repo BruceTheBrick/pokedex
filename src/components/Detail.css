@@ -18,12 +18,12 @@
 .switch-label {
   font-size: 0.25em;
 }
-.pokemon {
+.pokemon__sprite {
   display: flex;
   justify-content: center;
 }
 
-.pokemon-img img {
+.pokemon__sprite img {
   display: block;
   border-radius: 50%;
   border: 2px solid black;
@@ -37,6 +37,11 @@
   background: #000;
   box-shadow: 0 0 7px 5px #000;
   opacity: 0.125;
+}
+
+.pokemon__name {
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .spin-3d {

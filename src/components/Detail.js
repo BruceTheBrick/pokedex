@@ -4,21 +4,23 @@ import "./Detail.css";
 import Switch from "./Switch";
 import { convertTypeToColor } from "../Helper";
 import ReturnBtn from "./ReturnBtn";
+
+const PokeDexAPI = require("pokeapi-js-wrapper");
 class Detail extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     // this.state = { isSpinning: true };
 
     this.changeHandler = this.changeHandler.bind(this);
     this.spinState = this.getSpinningState();
+    this.pokedex = new PokeDexAPI.Pokedex(JSON.parse(props.pokedex));
     this.pokemon = props.pokemon;
-    this.pokedex = props.pokedex;
-
     this.getSpinningState = this.getSpinningState.bind(this);
 
     this.setPageColors(this.pokemon);
-    // this.getPokemonInfo();
+    this.getPokemonInfo = this.getPokemonInfo.bind(this);
+
+    this.getPokemonInfo();
   }
 
   setPageColors(pokemon) {
@@ -41,7 +43,11 @@ class Detail extends React.Component {
   }
 
   async getPokemonInfo() {
-    this.setState({ details: await this.pokedex.getPokemonByName(this.pokemon.name) });
+    this.setState({ pokemon: await this.pokedex.getPokemonByName(this.pokemon.name) });
+  }
+
+  getSprite() {
+    return this.state.pokemon.sprites.front_default;
   }
 
   getSpinningState() {
@@ -50,24 +56,29 @@ class Detail extends React.Component {
   }
 
   render() {
-    return (
-      <div className="content">
-        <ReturnBtn history={this.props.history} />
-        <div className="bg_curved"></div>
-        <div className="pokemon">
-          <div className={"pokemon-img " + (this.getSpinningState ? "spin-3d" : "")}>
-            <img src={this.pokemon.imgURL} alt={"Sprite of " + this.pokemon} />
-            <div className="sprite-shadow"></div>
+    if (this.state?.pokemon) {
+      return (
+        <div className="content">
+          <ReturnBtn history={this.props.history} />
+          <div className="bg_curved"></div>
+          <div className="pokemon__sprite">
+            <div className={"pokemon-img " + (this.getSpinningState ? "spin-3d" : "")}>
+              <img src={this.getSprite()} alt={"Sprite of " + this.state.pokemon.name} />
+              <div className="sprite-shadow"></div>
+            </div>
+          </div>
+          <div className="pokemon__name">{this.state.pokemon.name}</div>
+          <div>
+            <label className="switch-label" htmlFor="switch">
+              Enable Spin Animation
+            </label>
+            <Switch id="switch" isChecked={this.spinState} changeHandler={this.changeHandler} />
           </div>
         </div>
-        <div>
-          <label className="switch-label" htmlFor="switch">
-            Enable Spin Animation
-          </label>
-          <Switch id="switch" isChecked={this.spinState} changeHandler={this.changeHandler} />
-        </div>
-      </div>
-    );
+      );
+    } else {
+      return <div>Loading, please wait...</div>;
+    }
   }
 }
 

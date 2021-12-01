@@ -27,7 +27,6 @@ function App() {
         }}
         exact
       />
-
       <Route path="/PokemonDetails" component={Detail} />
     </Switch>
   );

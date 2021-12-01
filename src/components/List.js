@@ -37,7 +37,7 @@ export default class List extends React.Component {
                 pathname: "/PokemonDetails",
                 state: {
                   pokemon: pokemon,
-                  // pokedex: this.pokedex,
+                  pokedex: JSON.stringify(this.getPokedex()),
                 },
               }}
               pokedex={this.pokedex}
