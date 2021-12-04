@@ -2,15 +2,51 @@
   --space-xs: 0.5rem;
   --space-s: 0.75rem;
   --space-base: 1rem;
-  --space-m: 18px;
-  --space-l: 24px;
+  --space-m: 1.125rem;
+  --space-l: 2rem;
 
   --border-radius-soft: 1rem;
   --border-radius-rounded: 200px;
   --border-radius-circle: 50%;
 }
 
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.4);
+}
+/* Margins */
+.margin-base {
+  margin: var(--space-base);
+}
+
+.margin-bottom-base {
+  margin: var(--space-base);
+}
+
+/* Positioning */
+.position-absolute {
+  position: absolute;
+}
+
+.absolute-top-left {
+  top: 0;
+  left: 0;
+}
+
+.absolute-top-center {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.absolute-top-right {
+  top: 0;
+  right: 0;
+}
+
+/* Buttons */
 .btn {
+  font-size: 0.75rem;
   padding: 1em 1.125em;
   font-weight: bolder;
   display: flex;
