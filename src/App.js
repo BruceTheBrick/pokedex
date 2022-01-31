@@ -12,7 +12,7 @@ const pokedexOptions = {
   versionPath: "/api/v2/",
   cache: true,
   timeout: 5 * 1000,
-  cacheImages: true,
+  // cacheImages: true,
   limit: 10,
 };
 const pokedex = new PokeDexAPI.Pokedex(pokedexOptions);
