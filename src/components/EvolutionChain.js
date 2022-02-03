@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Loader from "./SkeletonLoader";
 import "./EvolutionChain.css";
 
 export default class EvolutionChain extends Component {
@@ -16,22 +17,27 @@ export default class EvolutionChain extends Component {
     this.initEvolutions();
   }
 
-  initEvolutions() {
+  async initEvolutions() {
     let evo = this.evoChain.chain;
+    let evolutions = [];
     let pokemon = [];
-    pokemon.push(evo.species);
+    evolutions.push(evo.species);
     do {
       let numEvos = evo.evolves_to.length;
-      pokemon.push(evo.evolves_to[0].species);
+      evolutions.push(evo.evolves_to[0].species);
       if (numEvos > 1) {
         for (let i = 1; i < numEvos; i++) {
-          pokemon.push(evo.evolves_to[i].speces);
+          evolutions.push(evo.evolves_to[i].speces);
         }
       }
       evo = evo.evolves_to[0];
     } while (evo.evolves_to.length > 0);
 
-    console.log(pokemon);
+    for (let i = 0; i < evolutions.length; i++) {
+      let temp = await this.pokedex.getPokemonByName(evolutions[i].name);
+      pokemon.push(temp);
+    }
+    this.setState({ evoChain: pokemon });
   }
 
   getEvolutionChainId(chainURL) {
@@ -39,6 +45,20 @@ export default class EvolutionChain extends Component {
   }
 
   render() {
-    return <div>Testing!</div>;
+    if (this.state?.evoChain) {
+      return (
+        <div className="evolution_chain_list">
+          {this.state.evoChain.map((pokemon) => {
+            return (
+              <div className="evolution_chain_item" key={pokemon.id}>
+                <img src={pokemon.sprites.front_default}></img>
+              </div>
+            );
+          })}
+        </div>
+      );
+    } else {
+      return <Loader />;
+    }
   }
 }

@@ -43,7 +43,6 @@ class Detail extends React.Component {
 
   changeHandler(isSpinning) {
     this.setState({ isSpinning: isSpinning });
-    console.log(this.state);
   }
 
   async getPokemonInfo() {
