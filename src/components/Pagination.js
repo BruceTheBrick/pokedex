@@ -58,36 +58,26 @@ export default class Pagination extends Component {
       startIndex: 0,
     });
 
-    for (let i = 0; i < this.startIndex - this.smallestPageNum(this.startIndex); i++) {
-      buttons.push({
-        label: this.smallestPageNum(this.startIndex) + i,
-        startIndex: this.startIndex + i * this.maxRecords,
-      });
-    }
-
-    for (let i = 0; i < this.largestPageNum(this.startIndex) - this.startIndex; i++) {
-      buttons.push({
-        label: this.largestPageNum(this.startIndex) + i,
-        startIndex: this.startIndex + i * this.maxRecords,
-      });
-    }
-
     buttons.push({
       label: Math.floor(this.totalCount / 10) * 10,
       startIndex: Math.floor(this.totalCount / 10) * 10,
     });
 
-    console.log(buttons);
-
     return buttons;
   }
 
   smallestPageNum(startIndex) {
-    return Math.max(1, startIndex - (this.MAX_NAV_BUTTONS - 1) / 2);
+    startIndex = Math.floor(startIndex / 10);
+    let num = Math.max(1, startIndex - (this.MAX_NAV_BUTTONS - 1) / 2);
+    console.log("Small: " + num);
+    return num;
   }
 
   largestPageNum(startIndex) {
-    return Math.min(this.totalCount, startIndex - (this.MAX_NAV_BUTTONS - 1) / 2);
+    startIndex = Math.floor(startIndex / 10);
+    let num = Math.min(Math.floor(this.totalCount / 10) * 10, startIndex + (this.MAX_NAV_BUTTONS - 1) / 2);
+    console.log("Large: " + num);
+    return num;
   }
 
   render() {
