@@ -21,13 +21,14 @@ export default class EvolutionChain extends Component {
     let evo = this.evoChain.chain;
     let evolutions = [];
     let pokemon = [];
+
     evolutions.push(evo.species);
+
     do {
       let numEvos = evo.evolves_to.length;
-      evolutions.push(evo.evolves_to[0].species);
-      if (numEvos > 1) {
-        for (let i = 1; i < numEvos; i++) {
-          evolutions.push(evo.evolves_to[i].speces);
+      if (numEvos > 0) {
+        for (let i = 0; i < numEvos; i++) {
+          evolutions.push(evo.evolves_to[i].species);
         }
       }
       evo = evo.evolves_to[0];
@@ -47,14 +48,16 @@ export default class EvolutionChain extends Component {
   render() {
     if (this.state?.evoChain) {
       return (
-        <div className="evolution_chain_list">
-          {this.state.evoChain.map((pokemon) => {
-            return (
-              <div className="evolution_chain_item" key={pokemon.id}>
-                <img src={pokemon.sprites.front_default}></img>
-              </div>
-            );
-          })}
+        <div className="card evolution_chain">
+          <div className="evolution_chain_list">
+            {this.state.evoChain.map((pokemon) => {
+              return (
+                <div className="evolution_chain_item" key={pokemon.id}>
+                  <img src={pokemon.sprites.front_default}></img>
+                </div>
+              );
+            })}
+          </div>
         </div>
       );
     } else {

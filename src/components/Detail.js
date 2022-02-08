@@ -4,7 +4,6 @@ import "./Detail.css";
 import Switch from "./Switch";
 import { convertTypeToColor } from "../Helper";
 import ReturnBtn from "./ReturnBtn";
-import List from "./List";
 import EvoChain from "./EvolutionChain";
 
 const PokeDexAPI = require("pokeapi-js-wrapper");

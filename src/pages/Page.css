@@ -24,7 +24,6 @@
   content: "";
   width: 100%;
   height: 0.125rem;
-  /* background: var(--color-accent); */
   background: var(--color-blue-darker);
   margin-top: 0.75rem;
   animation: slidePageTitleUnderline 1s ease-in-out;

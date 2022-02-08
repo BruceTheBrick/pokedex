@@ -1,3 +1,8 @@
+.card.evolution_chain {
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
 .evolution_chain_list {
   display: flex;
   flex-direction: row;
