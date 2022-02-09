@@ -6,7 +6,7 @@ export default class Pagination extends Component {
     super(props);
     this.maxRecords = props.maxRecords;
     this.totalCount = props.totalCount;
-    this.MAX_NAV_BUTTONS = 7;
+    this.MAX_NAV_BUTTONS = 5;
     this.startIndex = 0;
     this.currentPageNum = 1;
     this.maxPageNum = Math.floor(this.totalCount / 10) * 10;

@@ -20,7 +20,11 @@
 }
 
 .margin-bottom-base {
-  margin: var(--space-base);
+  margin-bottom: var(--space-base);
+}
+
+.margin-bottom-medium {
+  margin-bottom: var(--space-m);
 }
 
 /* Positioning */

@@ -53,7 +53,7 @@ export default class EvolutionChain extends Component {
             {this.state.evoChain.map((pokemon) => {
               return (
                 <div className="evolution_chain_item" key={pokemon.id}>
-                  <img src={pokemon.sprites.front_default}></img>
+                  <img src={pokemon.sprites.front_default} alt={pokemon.name}></img>
                 </div>
               );
             })}
