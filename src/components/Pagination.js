@@ -8,15 +8,16 @@ export default class Pagination extends Component {
     this.totalCount = props.totalCount;
     this.MAX_NAV_BUTTONS = 5;
     this.startIndex = 0;
+    this.selectedPageButton = 0;
 
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
     this.first = this.first.bind(this);
     this.last = this.last.bind(this);
     this.navigate = this.navigate.bind(this);
-
-    this.smallestPageNum = this.smallestPageNum.bind(this);
-    this.largestPageNum = this.largestPageNum.bind(this);
+    this.getNextPageNums = this.getNextPageNums.bind(this);
+    this.getLastPageNums = this.getLastPageNums.bind(this);
+    this.updateCurrentPageNum = this.updateCurrentPageNum.bind(this);
   }
 
   prev() {
@@ -30,8 +31,6 @@ export default class Pagination extends Component {
     if (this.startIndex + this.maxRecords <= this.totalCount) {
       this.startIndex += this.maxRecords;
       this.props.getNext(this.startIndex);
-    } else {
-      alert("You shall not pass");
     }
   }
 
@@ -50,39 +49,71 @@ export default class Pagination extends Component {
     this.props.navigate(this.startIndex);
   }
 
+  updateCurrentPageNum() {
+    this.currentPageNum = Math.floor(this.startIndex / this.maxRecords);
+  }
+
+  getNextPageNums(startIndex, quantity) {
+    let pageNums = [];
+    while (quantity > 0) {
+      pageNums.push(Math.floor(startIndex / this.maxRecords) + quantity + 1);
+      quantity--;
+    }
+    return pageNums;
+  }
+
+  getLastPageNums(startIndex, quantity) {
+    let pageNums = [];
+    while (quantity > 0) {
+      pageNums.push(Math.floor(startIndex / this.maxRecords) - quantity);
+      quantity--;
+    }
+    return pageNums;
+  }
+
   getButtonsList() {
     let buttons = [];
 
-    buttons.push({
-      label: 1,
-      startIndex: 0,
-    });
+    console.log(this.getNextPageNums(this.startIndex, 3));
+    console.log(this.getLastPageNums(this.startIndex, 3));
+    // buttons.push({
+    //   label: 1,
+    //   startIndex: 0,
+    // });
+
+    let nextNums = this.getNextPageNums(this.startIndex, 3);
+    for (let i = 0; i < nextNums.length; i++) {
+      buttons.push({
+        label: nextNums[i],
+        startIndex: nextNums[i] * this.maxRecords - this.maxRecords,
+      });
+    }
+
+    let lastNums = this.getLastPageNums(this.startIndex, 3);
+    for (let i = 0; i < lastNums.length; i++) {
+      buttons.push({
+        label: lastNums[i],
+        startIndex: lastNums[i] * this.maxRecords - this.maxRecords,
+      });
+    }
 
     buttons.push({
       label: Math.floor(this.totalCount / 10) * 10,
       startIndex: Math.floor(this.totalCount / 10) * 10,
     });
 
+    buttons.sort(function (a, b) {
+      return a.label - b.label;
+    });
+
+    buttons = buttons.filter((a) => a.label > 0);
+
     return buttons;
-  }
-
-  smallestPageNum(startIndex) {
-    startIndex = Math.floor(startIndex / 10);
-    let num = Math.max(1, startIndex - (this.MAX_NAV_BUTTONS - 1) / 2);
-    console.log("Small: " + num);
-    return num;
-  }
-
-  largestPageNum(startIndex) {
-    startIndex = Math.floor(startIndex / 10);
-    let num = Math.min(Math.floor(this.totalCount / 10) * 10, startIndex + (this.MAX_NAV_BUTTONS - 1) / 2);
-    console.log("Large: " + num);
-    return num;
   }
 
   render() {
     return (
-      <>
+      <div className="pagination-parent">
         <button onClick={this.prev} className="btn">
           &larr;
         </button>
@@ -104,40 +135,7 @@ export default class Pagination extends Component {
         <button onClick={this.next} className="btn">
           &rarr;
         </button>
-      </>
+      </div>
     );
   }
-  // render() {
-  //   return (
-  //     <>
-  //       <button onClick={this.first} className="btn">
-  //         &larr; &larr;
-  //       </button>
-  //       <button onClick={this.prev} className="btn">
-  //         &larr;
-  //       </button>
-  //       <div className="pagination_nav_buttons">
-  //         {this.getButtonsList().map((button) => {
-  //           return (
-  //             <button
-  //               className="btn"
-  //               onClick={() => {
-  //                 this.navigate(button.startIndex);
-  //               }}
-  //               key={button.label}
-  //             >
-  //               {button.label}
-  //             </button>
-  //           );
-  //         })}
-  //       </div>
-  //       <button onClick={this.next} className="btn">
-  //         &rarr;
-  //       </button>
-  //       <button onClick={this.last} className="btn">
-  //         &rarr; &rarr;
-  //       </button>
-  //     </>
-  //   );
-  // }
 }
