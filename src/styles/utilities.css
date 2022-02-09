@@ -49,8 +49,6 @@
   font-size: 0.75rem;
   padding: 1em 1.125em;
   font-weight: bolder;
-  display: flex;
-  align-items: center;
 }
 
 .btn > * {

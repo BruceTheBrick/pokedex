@@ -14,3 +14,11 @@
 
   width: 100%;
 }
+
+.pagination_nav_buttons .btn {
+  flex-basis: 100%;
+  text-align: center;
+}
+.pagination_nav_buttons .btn.active {
+  background: blue;
+}

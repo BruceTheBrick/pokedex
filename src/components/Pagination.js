@@ -6,24 +6,22 @@ export default class Pagination extends Component {
     super(props);
     this.maxRecords = props.maxRecords;
     this.totalCount = props.totalCount;
-    this.MAX_NAV_BUTTONS = 5;
+    this.MAX_NAV_BUTTONS = 7;
     this.startIndex = 0;
-    this.selectedPageButton = 0;
+    this.currentPageNum = 1;
+    this.maxPageNum = Math.floor(this.totalCount / 10) * 10;
 
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
-    this.first = this.first.bind(this);
-    this.last = this.last.bind(this);
     this.navigate = this.navigate.bind(this);
-    this.getNextPageNums = this.getNextPageNums.bind(this);
-    this.getLastPageNums = this.getLastPageNums.bind(this);
-    this.updateCurrentPageNum = this.updateCurrentPageNum.bind(this);
+    this.getCurrentPageNum = this.getCurrentPageNum.bind(this);
   }
 
   prev() {
     if (this.startIndex - this.maxRecords >= 0) {
       this.startIndex -= this.maxRecords;
       this.props.getPrev(this.startIndex);
+      this.getCurrentPageNum();
     }
   }
 
@@ -31,83 +29,42 @@ export default class Pagination extends Component {
     if (this.startIndex + this.maxRecords <= this.totalCount) {
       this.startIndex += this.maxRecords;
       this.props.getNext(this.startIndex);
+      this.getCurrentPageNum();
     }
-  }
-
-  first() {
-    this.startIndex = 0;
-    this.props.navigate(this.startIndex);
-  }
-
-  last() {
-    this.startIndex = Math.floor(this.totalCount / 10) * 10;
-    this.props.navigate(this.startIndex);
   }
 
   navigate(startIndex) {
     this.startIndex = startIndex;
+    this.getCurrentPageNum();
     this.props.navigate(this.startIndex);
   }
 
-  updateCurrentPageNum() {
-    this.currentPageNum = Math.floor(this.startIndex / this.maxRecords);
+  getCurrentPageNum() {
+    let num = 0;
+    if (this.startIndex === 0) num = 1;
+    else num = Math.floor(this.startIndex / this.maxRecords) + 1;
+    this.currentPageNum = num;
+    return num;
   }
 
-  getNextPageNums(startIndex, quantity) {
-    let pageNums = [];
-    while (quantity > 0) {
-      pageNums.push(Math.floor(startIndex / this.maxRecords) + quantity + 1);
-      quantity--;
-    }
-    return pageNums;
+  getLargestPageNum(maxRange = Math.floor(this.MAX_NAV_BUTTONS / 2)) {
+    if (this.maxPageNum - this.currentPageNum > maxRange) return this.currentPageNum + maxRange;
+    else return this.maxPageNum;
   }
 
-  getLastPageNums(startIndex, quantity) {
-    let pageNums = [];
-    while (quantity > 0) {
-      pageNums.push(Math.floor(startIndex / this.maxRecords) - quantity);
-      quantity--;
-    }
-    return pageNums;
+  getSmallestPageNum(maxRange = Math.floor(this.MAX_NAV_BUTTONS / 2)) {
+    if (this.currentPageNum - maxRange > 1) return this.currentPageNum - maxRange;
+    else return 1;
   }
 
   getButtonsList() {
     let buttons = [];
-
-    console.log(this.getNextPageNums(this.startIndex, 3));
-    console.log(this.getLastPageNums(this.startIndex, 3));
-    // buttons.push({
-    //   label: 1,
-    //   startIndex: 0,
-    // });
-
-    let nextNums = this.getNextPageNums(this.startIndex, 3);
-    for (let i = 0; i < nextNums.length; i++) {
+    for (let i = this.getSmallestPageNum(); i < this.getLargestPageNum() + 1; i++) {
       buttons.push({
-        label: nextNums[i],
-        startIndex: nextNums[i] * this.maxRecords - this.maxRecords,
+        label: i,
+        startIndex: (i - 1) * this.maxRecords,
       });
     }
-
-    let lastNums = this.getLastPageNums(this.startIndex, 3);
-    for (let i = 0; i < lastNums.length; i++) {
-      buttons.push({
-        label: lastNums[i],
-        startIndex: lastNums[i] * this.maxRecords - this.maxRecords,
-      });
-    }
-
-    buttons.push({
-      label: Math.floor(this.totalCount / 10) * 10,
-      startIndex: Math.floor(this.totalCount / 10) * 10,
-    });
-
-    buttons.sort(function (a, b) {
-      return a.label - b.label;
-    });
-
-    buttons = buttons.filter((a) => a.label > 0);
-
     return buttons;
   }
 
@@ -121,7 +78,7 @@ export default class Pagination extends Component {
           {this.getButtonsList().map((button) => {
             return (
               <button
-                className="btn"
+                className={"btn " + (this.getCurrentPageNum() === button.label ? "active" : "")}
                 onClick={() => {
                   this.navigate(button.startIndex);
                 }}
