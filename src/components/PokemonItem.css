@@ -1,11 +1,25 @@
 .list-item {
+  position: relative;
+
+  display: grid;
+  grid-template-areas:
+    "sprite"
+    "name"
+    "types";
+
+  text-align: center;
+
   min-height: 160px;
+  width: 100%;
+
   border: 2px solid black;
   border-radius: 15px;
+
   padding: var(--space-base);
-  position: relative;
+
   overflow: hidden;
   cursor: pointer;
+
   transition: transform 250ms;
 }
 
@@ -13,30 +27,42 @@
   transform: scale(1.05);
 }
 
-.list-item .header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
+.list-item .name {
+  grid-area: name;
 
-.list-item .type {
-  text-transform: capitalize;
-}
-
-.header .name {
   font-weight: bolder;
   text-transform: capitalize;
 }
 
-.header .id {
+.list-item .id {
+  grid-area: id;
+
+  text-align: right;
   color: rgba(0, 0, 0, 0.4);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--space-base);
 }
 
-.body {
-  display: grid;
-  grid-template-areas: "types sprite";
-  grid-template-columns: 50% auto;
+.list-item .types {
+  grid-area: types;
+}
+
+.list-item .types .type {
+  text-transform: capitalize;
+  border-radius: var(--border-radius-soft);
+  background: rgba(255, 255, 255, 0.4);
+  padding: 0.35em 0.35em;
+}
+
+.list-item .types > * {
+  margin-top: var(--space-s);
+}
+
+.list-item .sprite {
+  grid-area: sprite;
 }
 
 .background-image {
@@ -51,23 +77,22 @@
   transform: translate(25%, 35%);
 }
 
-.back .body .types {
-  grid-area: types;
-  display: flex;
-  flex-direction: column-reverse;
-}
+@media (max-width: 480px) {
+  .list-item {
+    grid-template-areas:
+      "name id"
+      "types sprite";
 
-.body .sprite {
-  grid-area: sprite;
-  justify-self: end;
-}
+    grid-template-columns: 50%;
 
-.types > * {
-  margin-top: var(--space-s);
-}
+    text-align: left;
+  }
 
-.types .type {
-  border-radius: var(--border-radius-soft);
-  background: rgba(255, 255, 255, 0.4);
-  padding: 0.35em 0.35em;
+  .list-item .id {
+    position: relative;
+  }
+
+  .list-item .sprite {
+    justify-self: end;
+  }
 }
