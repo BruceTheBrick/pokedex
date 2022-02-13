@@ -4,36 +4,95 @@ import "./Pagination.css";
 export default class Pagination extends Component {
   constructor(props) {
     super(props);
-    this.pokedex = props.pokedex;
-    this.startIndex = props.startIndex;
-    this.limit = props.limit;
-    this.pokemonUpdated = props.listUpdated;
-
-    this.getNext = this.getNext.bind(this);
-    this.getFirstList();
-  }
-
-  async getFirstList() {
-    let newList;
+    this.maxRecords = props.maxRecords;
+    this.totalCount = props.totalCount;
+    this.MAX_NAV_BUTTONS = 5;
     this.startIndex = 0;
-    newList = await this.pokedex.getPokemonsList({ offset: 0, limit: this.limit });
-    this.pokemonUpdated(newList.results);
+    this.currentPageNum = 1;
+    this.maxPageNum = Math.floor(this.totalCount / 10) * 10;
+
+    this.prev = this.prev.bind(this);
+    this.next = this.next.bind(this);
+    this.navigate = this.navigate.bind(this);
+    this.getCurrentPageNum = this.getCurrentPageNum.bind(this);
   }
 
-  async getNext() {
-    let newList;
-    this.startIndex += this.limit;
-    newList = await this.pokedex.getPokemonsList({ offset: this.startIndex, limit: this.limit });
-    this.pokemonUpdated(newList.results);
+  prev() {
+    if (this.startIndex - this.maxRecords >= 0) {
+      this.startIndex -= this.maxRecords;
+      this.props.getPrev(this.startIndex);
+      this.getCurrentPageNum();
+    }
+  }
+
+  next() {
+    if (this.startIndex + this.maxRecords <= this.totalCount) {
+      this.startIndex += this.maxRecords;
+      this.props.getNext(this.startIndex);
+      this.getCurrentPageNum();
+    }
+  }
+
+  navigate(startIndex) {
+    this.startIndex = startIndex;
+    this.getCurrentPageNum();
+    this.props.navigate(this.startIndex);
+  }
+
+  getCurrentPageNum() {
+    let num = 0;
+    if (this.startIndex === 0) num = 1;
+    else num = Math.floor(this.startIndex / this.maxRecords) + 1;
+    this.currentPageNum = num;
+    return num;
+  }
+
+  getLargestPageNum(maxRange = Math.floor(this.MAX_NAV_BUTTONS / 2)) {
+    if (this.maxPageNum - this.currentPageNum > maxRange) return this.currentPageNum + maxRange;
+    else return this.maxPageNum;
+  }
+
+  getSmallestPageNum(maxRange = Math.floor(this.MAX_NAV_BUTTONS / 2)) {
+    if (this.currentPageNum - maxRange > 1) return this.currentPageNum - maxRange;
+    else return 1;
+  }
+
+  getButtonsList() {
+    let buttons = [];
+    let numIterations = this.getLargestPageNum() < this.MAX_NAV_BUTTONS ? this.MAX_NAV_BUTTONS : this.getLargestPageNum();
+    for (let i = this.getSmallestPageNum(); i < numIterations; i++) {
+      buttons.push({
+        label: i,
+        startIndex: (i - 1) * this.maxRecords,
+      });
+    }
+    return buttons;
   }
 
   render() {
     return (
       <div className="pagination-parent">
-        <div className="prev">&larr;</div>
-        <div className="next" onClick={this.getNext}>
-          &rarr;
+        <button onClick={this.prev} className="btn">
+          &larr;
+        </button>
+        <div className="pagination_nav_buttons">
+          {this.getButtonsList().map((button) => {
+            return (
+              <button
+                className={"btn " + (this.getCurrentPageNum() === button.label ? "active" : "")}
+                onClick={() => {
+                  this.navigate(button.startIndex);
+                }}
+                key={button.label}
+              >
+                {button.label}
+              </button>
+            );
+          })}
         </div>
+        <button onClick={this.next} className="btn">
+          &rarr;
+        </button>
       </div>
     );
   }

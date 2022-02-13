@@ -9,14 +9,7 @@
 
 :root {
   --pokedex-red: #df4b43;
-  --red: lightcoral;
-  --red-darker: rgb(235, 95, 95);
-
-  --blue: lightblue;
-  --blue-darker: rgb(136, 209, 233);
-
-  --green: lightgreen;
-  --green-darker: rgb(114, 240, 114);
+  --blue: #528efb;
 
   --normal: #a8a77b;
   --fire: #ef7e3b;
@@ -42,13 +35,13 @@
   background: var(--normal);
 }
 .bg_fire {
-  background: var(--red);
+  background: var(--fire);
 }
 .bg_water {
-  background: var(--blue);
+  background: var(--water);
 }
 .bg_grass {
-  background: var(--green);
+  background: var(--grass);
 }
 .bg_electric {
   background: var(--electric);
@@ -95,4 +88,27 @@
 
 a {
   all: unset;
+}
+
+body {
+  background: var(--pokedex-red);
+}
+
+body::-webkit-scrollbar {
+  width: 2rem;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  width: 200px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--blue);
+  border: 2px solid white;
+  width: 200px;
+}
+
+button {
+  cursor: pointer;
 }

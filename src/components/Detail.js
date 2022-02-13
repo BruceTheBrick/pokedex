@@ -4,7 +4,7 @@ import "./Detail.css";
 import Switch from "./Switch";
 import { convertTypeToColor } from "../Helper";
 import ReturnBtn from "./ReturnBtn";
-import List from "./List";
+import EvoChain from "./EvolutionChain";
 
 const PokeDexAPI = require("pokeapi-js-wrapper");
 class Detail extends React.Component {
@@ -42,7 +42,6 @@ class Detail extends React.Component {
 
   changeHandler(isSpinning) {
     this.setState({ isSpinning: isSpinning });
-    console.log(this.state);
   }
 
   async getPokemonInfo() {
@@ -66,15 +65,17 @@ class Detail extends React.Component {
           </div>
           <ReturnBtn history={this.props.history} />
 
-          <div className="pokemon__sprite margin-bottom-base">
+          <div className="pokemon__sprite margin-bottom-medium">
             <div className={"pokemon-img " + (this.getSpinningState() ? "spin-3d" : "")}>
               <img src={this.getSprite()} alt={"Sprite of " + this.state.pokemon.name} />
               <div className="sprite-shadow"></div>
             </div>
           </div>
 
-          <div className="pokemon__name">{this.state.pokemon.name}</div>
-          <div className="card"></div>
+          <div className="pokemon__name margin-bottom-base">{this.state.pokemon.name}</div>
+          <div className="card">
+            <EvoChain pokemon={this.state.pokemon} pokedex={this.pokedex}></EvoChain>
+          </div>
         </div>
       );
     } else {

@@ -4,6 +4,7 @@ import Page from "./Page";
 import PokeDexLogo from "../assets/PokeDex.png";
 
 import List from "../components/List";
+import Pagination from "../components/Pagination";
 
 const PokeDexAPI = require("pokeapi-js-wrapper");
 
@@ -24,29 +25,17 @@ export default class Homepage extends Component {
     this.limit = 10;
     this.totalCount = 0;
 
-    this.getNext = this.getNext.bind(this);
-    this.getPrev = this.getPrev.bind(this);
+    this.updateList = this.updateList.bind(this);
+
     this.pokemonUpdated = this.pokemonUpdated.bind(this);
-    this.initList();
+    this.updateList(this.startIndex);
   }
 
-  async initList() {
+  async updateList(startIndex) {
+    this.startIndex = startIndex;
     let newList = await this.pokedex.getPokemonsList({ offset: this.startIndex, limit: this.limit });
+    this.totalCount = newList.count;
     this.setState({ list: newList.results });
-  }
-
-  async getNext() {
-    this.startIndex += this.limit;
-    let newList = await this.pokedex.getPokemonsList({ offset: this.startIndex, limit: this.limit });
-    this.setState({ list: newList.results });
-  }
-
-  async getPrev() {
-    if (this.startIndex > 0) {
-      this.startIndex -= this.limit;
-      let newList = await this.pokedex.getPokemonsList({ offset: this.startIndex, limit: this.limit });
-      this.setState({ list: newList.results });
-    }
   }
 
   getCurrentList() {
@@ -63,12 +52,7 @@ export default class Homepage extends Component {
         <Page title="Pokedex" image={PokeDexLogo} image_alt={"PokeDex"}>
           <List list={this.state.list} pokedex={this.pokedex}></List>
           <div className="list_nav">
-            <button onClick={this.getPrev} className="btn">
-              &larr;
-            </button>
-            <button onClick={this.getNext} className="btn">
-              &rarr;
-            </button>
+            <Pagination getNext={this.updateList} getPrev={this.updateList} navigate={this.updateList} maxRecords={10} totalCount={this.totalCount} />
           </div>
         </Page>
       );

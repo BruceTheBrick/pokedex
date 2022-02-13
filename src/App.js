@@ -10,7 +10,7 @@ const PokeDexAPI = require("pokeapi-js-wrapper");
 const pokedexOptions = {
   protocol: "https",
   versionPath: "/api/v2/",
-  cache: true,
+  // cache: true,
   timeout: 5 * 1000,
   // cacheImages: true,
   limit: 10,

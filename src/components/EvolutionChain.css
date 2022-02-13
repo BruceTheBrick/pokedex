@@ -1,0 +1,22 @@
+.card.evolution_chain {
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.evolution_chain_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.evolution_chain_list > * {
+  margin-right: var(--space-base);
+}
+
+.evolution_chain_item {
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 100%;
+}

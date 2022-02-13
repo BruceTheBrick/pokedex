@@ -1,7 +1,3 @@
-.content {
-  background: var(--pokedex-red) !important;
-}
-
 .main {
   background: rgba(255, 255, 255, 0.4);
   padding: var(--space-base);
