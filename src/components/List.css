@@ -1,15 +1,34 @@
 .list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .list > * {
   margin-bottom: var(--space-base) !important;
+<<<<<<< HEAD
   width: 100%;
+=======
+  flex: 1 1 30%;
+  margin-right: var(--space-base);
+>>>>>>> StashedChanged
 }
 
 .list a {
   text-decoration: none;
   color: inherit;
+}
+
+/* MOBILE CSS */
+@media (max-width: 480px) {
+  .list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .list > * {
+    max-width: 400px;
+    min-width: 90%;
+  }
 }

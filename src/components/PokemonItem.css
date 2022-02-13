@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .list-item {
   position: relative;
 
@@ -9,6 +10,9 @@
 
   text-align: center;
 
+=======
+/* .list-item {
+>>>>>>> StashedChanged
   min-height: 160px;
   width: 100%;
 
@@ -21,9 +25,26 @@
   cursor: pointer;
 
   transition: transform 250ms;
+} */
+
+.list-item {
+  min-height: 160px;
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: var(--space-base);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 250ms ease-in-out;
+
+  display: grid;
+  grid-template-areas:
+    "name id"
+    "types thumb";
 }
 
-.list-item:hover {
+.list-item:hover,
+.list-item:active {
   transform: scale(1.05);
 }
 
@@ -32,6 +53,7 @@
 
   font-weight: bolder;
   text-transform: capitalize;
+  grid-area: name;
 }
 
 .list-item .id {
@@ -39,11 +61,15 @@
 
   text-align: right;
   color: rgba(0, 0, 0, 0.4);
+<<<<<<< HEAD
 
   position: absolute;
   top: 0;
   right: 0;
   padding: var(--space-base);
+=======
+  grid-area: id;
+>>>>>>> StashedChanged
 }
 
 .list-item .types {
@@ -75,6 +101,7 @@
   overflow: hidden;
 
   transform: translate(25%, 35%);
+  grid-area: thumb;
 }
 
 @media (max-width: 480px) {
@@ -95,4 +122,8 @@
   .list-item .sprite {
     justify-self: end;
   }
+}
+
+/* MOBILE CSS */
+@media (max-width: 480px) {
 }
