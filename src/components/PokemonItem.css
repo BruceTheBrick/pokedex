@@ -1,18 +1,4 @@
-<<<<<<< HEAD
-.list-item {
-  position: relative;
-
-  display: grid;
-  grid-template-areas:
-    "sprite"
-    "name"
-    "types";
-
-  text-align: center;
-
-=======
 /* .list-item {
->>>>>>> StashedChanged
   min-height: 160px;
   width: 100%;
 
@@ -28,19 +14,29 @@
 } */
 
 .list-item {
-  min-height: 160px;
-  border: 2px solid black;
-  border-radius: 1rem;
-  padding: var(--space-base);
   position: relative;
+
+  height: 100%;
+  width: 100%;
+  min-height: 160px;
+
+  border: 2px solid black;
+  border-radius: 15px;
+
+  padding: var(--space-base);
+
   overflow: hidden;
   cursor: pointer;
-  transition: transform 250ms ease-in-out;
+
+  transition: transform 250ms;
+
+  text-align: center;
 
   display: grid;
   grid-template-areas:
-    "name id"
-    "types thumb";
+    "sprite"
+    "name"
+    "types";
 }
 
 .list-item:hover,
@@ -53,7 +49,6 @@
 
   font-weight: bolder;
   text-transform: capitalize;
-  grid-area: name;
 }
 
 .list-item .id {
@@ -61,15 +56,11 @@
 
   text-align: right;
   color: rgba(0, 0, 0, 0.4);
-<<<<<<< HEAD
 
   position: absolute;
   top: 0;
   right: 0;
   padding: var(--space-base);
-=======
-  grid-area: id;
->>>>>>> StashedChanged
 }
 
 .list-item .types {
@@ -101,10 +92,9 @@
   overflow: hidden;
 
   transform: translate(25%, 35%);
-  grid-area: thumb;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .list-item {
     grid-template-areas:
       "name id"
@@ -122,8 +112,4 @@
   .list-item .sprite {
     justify-self: end;
   }
-}
-
-/* MOBILE CSS */
-@media (max-width: 480px) {
 }
