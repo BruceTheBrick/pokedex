@@ -10,10 +10,19 @@ class PokemonItem extends Component {
     super(props);
 
     this.getPokemonInfo();
+
+    this.AbortController = new AbortController();
+    this.abortSignal = this.AbortController.signal;
   }
 
-  async getPokemonInfo() {
-    this.setState({ details: await this.props.pokedex.getPokemonByName(this.props.pokemon.name) });
+  componentWillUnmount() {
+    this.AbortController.abort();
+  }
+
+  async getPokemonInfo(signal = this.abortSignal) {
+    try {
+      this.setState({ details: await this.props.pokedex.getPokemonByName(this.props.pokemon.name, signal) });
+    } catch (err) {}
   }
 
   getId() {
