@@ -59,7 +59,8 @@ export default class Pagination extends Component {
 
   getButtonsList() {
     let buttons = [];
-    for (let i = this.getSmallestPageNum(); i < this.getLargestPageNum() + 1; i++) {
+    let numIterations = this.getLargestPageNum() < this.MAX_NAV_BUTTONS ? this.MAX_NAV_BUTTONS : this.getLargestPageNum();
+    for (let i = this.getSmallestPageNum(); i < numIterations; i++) {
       buttons.push({
         label: i,
         startIndex: (i - 1) * this.maxRecords,
