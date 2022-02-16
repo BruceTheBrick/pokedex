@@ -4,27 +4,92 @@
   --space-base: 1rem;
   --space-m: 1.125rem;
   --space-l: 2rem;
+  --space-xl: 3rem;
+  --space-xxl: 4rem;
 
-  --border-radius-soft: 1rem;
-  --border-radius-rounded: 200px;
+  --border-radius-soft: 0.5rem;
+  --border-radius-rounded: 5rem;
   --border-radius-circle: 50%;
+}
+/* Font */
+.bold {
+  font-weight: bold;
+}
+
+.bolder {
+  font-weight: bolder;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
 }
 
 /* Cards */
 .card {
   background: rgba(255, 255, 255, 0.4);
+  padding: var(--space-base);
+  border-radius: var(--border-radius-soft);
 }
+
 /* Margins */
+.margin-xs {
+  margin: var(--space-xs);
+}
+
+.margin-s {
+  margin: var(--space-s);
+}
+
 .margin-base {
   margin: var(--space-base);
+}
+
+.margin-m {
+  margin: var(--space-m);
+}
+
+.margin-l {
+  margin: var(--space-l);
+}
+
+.margin-xl {
+  margin: var(--space-xl);
+}
+
+.margin-xxl {
+  margin: var(--space-xxl);
+}
+
+.margin-bottom-xs {
+  margin-bottom: var(--space-xs);
+}
+
+.margin-bottom-s {
+  margin-bottom: var(--space-s);
 }
 
 .margin-bottom-base {
   margin-bottom: var(--space-base);
 }
 
-.margin-bottom-medium {
+.margin-bottom-m {
   margin-bottom: var(--space-m);
+}
+
+.margin-bottom-l {
+  margin-bottom: var(--space-l);
+}
+
+.margin-bottom-xl {
+  margin-bottom: var(--space-xl);
+}
+
+.margin-bottom-xxl {
+  margin-bottom: var(--space-xxl);
 }
 
 /* Positioning */
