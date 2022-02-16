@@ -52,7 +52,7 @@ export default class Homepage extends Component {
         <Page title="Pokedex" image={PokeDexLogo} image_alt={"PokeDex"}>
           <List list={this.state.list} pokedex={this.pokedex}></List>
           <div className="list_nav">
-            <Pagination getNext={this.updateList} getPrev={this.updateList} navigate={this.updateList} maxRecords={10} totalCount={this.totalCount} />
+            <Pagination getNext={this.updateList} getPrev={this.updateList} navigate={this.updateList} maxRecords={10} totalCount={this.totalCount} startIndex={this.startIndex} />
           </div>
         </Page>
       );
@@ -60,7 +60,9 @@ export default class Homepage extends Component {
       return (
         <>
           <button onClick={this.getNext}>Get Next</button>
-          <div>Empty</div>
+          <div className="list_nav">
+            <Pagination getNext={this.updateList} getPrev={this.updateList} navigate={this.updateList} maxRecords={10} totalCount={this.totalCount} />
+          </div>
         </>
       );
     }

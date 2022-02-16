@@ -59,24 +59,28 @@ class Detail extends React.Component {
   render() {
     if (this.state?.pokemon) {
       return (
-        <div className="content">
+        <>
           <div className="position-absolute absolute-top-right padding-base">
             <Switch id="switch" isChecked={this.spinState} changeHandler={this.changeHandler} />
           </div>
           <ReturnBtn history={this.props.history} />
 
-          <div className="pokemon__sprite margin-bottom-medium">
-            <div className={"pokemon-img " + (this.getSpinningState() ? "spin-3d" : "")}>
-              <img src={this.getSprite()} alt={"Sprite of " + this.state.pokemon.name} />
-              <div className="sprite-shadow"></div>
+          <div className="card margin-bottom-m">
+            <div className="pokemon__sprite margin-bottom-l">
+              <div className={"pokemon-img " + (this.getSpinningState() ? "spin-3d" : "")}>
+                <img src={this.getSprite()} alt={"Sprite of " + this.state.pokemon.name} />
+                <div className="sprite-shadow"></div>
+              </div>
             </div>
+            <div className="pokemon__name margin-bottom-base">{this.state.pokemon.name}</div>
           </div>
 
-          <div className="pokemon__name margin-bottom-base">{this.state.pokemon.name}</div>
-          <div className="card">
+          <div className="card margin-bottom-m">
             <EvoChain pokemon={this.state.pokemon} pokedex={this.pokedex}></EvoChain>
           </div>
-        </div>
+
+          <div className="card margin-bottom-m"></div>
+        </>
       );
     } else {
       return <div>Loading, please wait...</div>;

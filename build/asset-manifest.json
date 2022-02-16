@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "Users/TechB/Documents/pokedex/build/static/css/main.dc2fa364.chunk.css",
+    "main.js": "Users/TechB/Documents/pokedex/build/static/js/main.828c8edc.chunk.js",
+    "main.js.map": "Users/TechB/Documents/pokedex/build/static/js/main.828c8edc.chunk.js.map",
+    "runtime-main.js": "Users/TechB/Documents/pokedex/build/static/js/runtime-main.44148221.js",
+    "runtime-main.js.map": "Users/TechB/Documents/pokedex/build/static/js/runtime-main.44148221.js.map",
+    "static/js/2.88ea17fb.chunk.js": "Users/TechB/Documents/pokedex/build/static/js/2.88ea17fb.chunk.js",
+    "static/js/2.88ea17fb.chunk.js.map": "Users/TechB/Documents/pokedex/build/static/js/2.88ea17fb.chunk.js.map",
+    "index.html": "Users/TechB/Documents/pokedex/build/index.html",
+    "static/css/main.dc2fa364.chunk.css.map": "Users/TechB/Documents/pokedex/build/static/css/main.dc2fa364.chunk.css.map",
+    "static/js/2.88ea17fb.chunk.js.LICENSE.txt": "Users/TechB/Documents/pokedex/build/static/js/2.88ea17fb.chunk.js.LICENSE.txt",
+    "static/media/PokeDex.008466e1.png": "Users/TechB/Documents/pokedex/build/static/media/PokeDex.008466e1.png",
+    "static/media/fonts.css": "Users/TechB/Documents/pokedex/build/static/media/PokemonGBA.6211ee48.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.44148221.js",
+    "static/js/2.88ea17fb.chunk.js",
+    "static/css/main.dc2fa364.chunk.css",
+    "static/js/main.828c8edc.chunk.js"
+  ]
+}

@@ -112,3 +112,9 @@ body::-webkit-scrollbar-thumb {
 button {
   cursor: pointer;
 }
+
+hr {
+  height: 1px;
+  border: 0;
+  background: rgba(0, 0, 0.5);
+}

@@ -10,10 +10,19 @@ class PokemonItem extends Component {
     super(props);
 
     this.getPokemonInfo();
+
+    this.AbortController = new AbortController();
+    this.abortSignal = this.AbortController.signal;
   }
 
-  async getPokemonInfo() {
-    this.setState({ details: await this.props.pokedex.getPokemonByName(this.props.pokemon.name) });
+  componentWillUnmount() {
+    this.AbortController.abort();
+  }
+
+  async getPokemonInfo(signal = this.abortSignal) {
+    try {
+      this.setState({ details: await this.props.pokedex.getPokemonByName(this.props.pokemon.name, signal) });
+    } catch (err) {}
   }
 
   getId() {
@@ -44,23 +53,19 @@ class PokemonItem extends Component {
       const pokemon = this.state.details;
       return (
         <div className={"list-item fadeIn bg_" + this.getTypes()[0]}>
-          <div className="header">
-            <div className="name">{pokemon.name}</div>
-            <div className="id">#{this.getId()}</div>
+          <div className="name">{pokemon.name}</div>
+          <div className="id">#{this.getId()}</div>
+          <div className="types">
+            {this.getTypes().map((type) => {
+              return (
+                <div key={type} className="type">
+                  {type}
+                </div>
+              );
+            })}
           </div>
-          <div className="body">
-            <div className="types">
-              {this.getTypes().map((type) => {
-                return (
-                  <div key={type} className="type">
-                    {type}
-                  </div>
-                );
-              })}
-            </div>
-            <div className="sprite">
-              <img src={this.getSprite()} alt={pokemon.name} title={pokemon.name}></img>
-            </div>
+          <div className="sprite">
+            <img src={this.getSprite()} alt={pokemon.name} title={pokemon.name}></img>
           </div>
           <div className="background-image">
             <img src={PkBall} alt="" />
@@ -82,3 +87,27 @@ PokemonItem.defaultProps = {
 };
 
 export default PokemonItem;
+
+// <div className={"list-item fadeIn bg_" + this.getTypes()[0]}>
+//   <div className="header">
+//     <div className="name">{pokemon.name}</div>
+//     <div className="id">#{this.getId()}</div>
+//   </div>
+//   <div className="body">
+//     <div className="types">
+//       {this.getTypes().map((type) => {
+//         return (
+//           <div key={type} className="type">
+//             {type}
+//           </div>
+//         );
+//       })}
+//     </div>
+//     <div className="sprite">
+//       <img src={this.getSprite()} alt={pokemon.name} title={pokemon.name}></img>
+//     </div>
+//   </div>
+//   <div className="background-image">
+//     <img src={PkBall} alt="" />
+//   </div>
+// </div>;

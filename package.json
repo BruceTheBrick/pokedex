@@ -11,9 +11,10 @@
     "core-js": "^3.21.0",
     "pokeapi-js-wrapper": "^1.1.2",
     "react": "^17.0.2",
+    "react-device-detect": "^2.1.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
-    "react-native": "^0.61.4",
+    "react-native": ">=0.62.3",
     "react-native-reanimated": "^2.2.3",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.8.0",
@@ -24,7 +25,16 @@
     "serve": "^13.0.2",
     "typescript": "^4.4.4",
     "uglify-js": "^3.15.1",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "node-fetch": ">=2.6.7",
+    "follow-redirects": ">=1.14.8",
+    "postcss": ">=8.2.13",
+    "node-notifier": ">8.0.1",
+    "yargs-parser": ">=13.1.2",
+    "logkitty": ">=0.7.1",
+    "mem": ">=4.0.0",
+    "ansi-regex": ">=5.0.1",
+    "nth-check": ">=2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -55,7 +65,16 @@
     "browserslist": "^4.17.4",
     "glob-parent": "^6.0.2",
     "immer": "^9.0.6",
-    "nth-check": "^2.0.1",
-    "set-value": "^4.1.0"
+    "set-value": "^4.1.0",
+    "node-fetch": ">=2.6.7",
+    "react-native": ">=0.62.3",
+    "follow-redirects": ">=1.14.8",
+    "postcss": ">=8.2.13",
+    "node-notifier": ">8.0.1",
+    "yargs-parser": ">=13.1.2",
+    "logkitty": ">=0.7.1",
+    "mem": ">=4.0.0",
+    "ansi-regex": ">=5.0.1",
+    "nth-check": ">=2.0.1"
   }
 }

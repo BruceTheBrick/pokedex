@@ -20,8 +20,7 @@ export default class EvolutionChain extends Component {
   async initEvolutions() {
     let evo = this.evoChain.chain;
     let evolutions = [];
-    let pokemon = [];
-
+    let pokemonList = [];
     evolutions.push(evo.species);
 
     do {
@@ -36,26 +35,41 @@ export default class EvolutionChain extends Component {
 
     for (let i = 0; i < evolutions.length; i++) {
       let temp = await this.pokedex.getPokemonByName(evolutions[i].name);
-      pokemon.push(temp);
+      pokemonList.push(temp);
     }
-    this.setState({ evoChain: pokemon });
+    this.setState({ evoChain: pokemonList });
   }
 
   getEvolutionChainId(chainURL) {
     return chainURL.substring(chainURL.indexOf("/", chainURL.length - 5) + 1, chainURL.length - 1);
   }
 
+  generateEvoItem(pokemon) {
+    return (
+      <div className="evolution_chain_item">
+        <img className="eci_img margin-bottom-base" src={pokemon.sprites.front_default} alt={pokemon.name}></img>
+        <div className="eci_name">{pokemon.name}</div>
+      </div>
+    );
+  }
+
   render() {
     if (this.state?.evoChain) {
       return (
-        <div className="card evolution_chain">
+        <div className="evolution_chain padding-base border-radius-soft">
+          <div className="margin-bottom-base bold">Evolution Chain</div>
+          <hr className="margin-bottom-base" />
           <div className="evolution_chain_list">
-            {this.state.evoChain.map((pokemon) => {
-              return (
-                <div className="evolution_chain_item" key={pokemon.id}>
-                  <img src={pokemon.sprites.front_default} alt={pokemon.name}></img>
-                </div>
-              );
+            {this.state.evoChain.map((pokemon, index) => {
+              if (index < this.state.evoChain.length - 1) {
+                return (
+                  <React.Fragment key={pokemon.id}>
+                    <div>{this.generateEvoItem(pokemon)}</div>
+                    <div className="arrow bolder">&rarr;</div>
+                  </React.Fragment>
+                );
+              }
+              return <div key={pokemon.id}>{this.generateEvoItem(pokemon)}</div>;
             })}
           </div>
         </div>
