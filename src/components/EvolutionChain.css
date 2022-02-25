@@ -4,6 +4,10 @@
   justify-content: center;
   width: 100%;
   overflow-x: auto;
+
+  border: 1px solid black;
+  border-radius: var(--border-radius-soft);
+  padding: var(--space-base);
 }
 
 .evolution_chain_list > * {

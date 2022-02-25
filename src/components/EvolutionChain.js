@@ -9,12 +9,20 @@ export default class EvolutionChain extends Component {
     this.pokemon = props.pokemon;
     this.pokedex = props.pokedex;
     this.getEvoChain();
+
+    this.setFlavourText = this.setFlavourText.bind(this);
   }
 
   async getEvoChain() {
     this.species = await this.pokedex.getPokemonSpeciesByName(this.pokemon.species.name);
+    this.setFlavourText(this.species);
+    console.log(this.state.flavourText);
     this.evoChain = await this.pokedex.getEvolutionChainById(this.getEvolutionChainId(this.species.evolution_chain.url));
     this.initEvolutions();
+  }
+
+  setFlavourText(species) {
+    this.setState({ flavorText: species.flavor_text_entries[0].flavor_text });
   }
 
   async initEvolutions() {
@@ -58,7 +66,6 @@ export default class EvolutionChain extends Component {
       return (
         <div className="evolution_chain padding-base border-radius-soft">
           <div className="margin-bottom-base bold">Evolution Chain</div>
-          <hr className="margin-bottom-base" />
           <div className="evolution_chain_list">
             {this.state.evoChain.map((pokemon, index) => {
               if (index < this.state.evoChain.length - 1) {

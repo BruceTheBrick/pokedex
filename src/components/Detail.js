@@ -75,7 +75,7 @@ class Detail extends React.Component {
             <div className="pokemon__name margin-bottom-base">{this.state.pokemon.name}</div>
           </div>
 
-          <div className="card margin-bottom-m">
+          <div className="card margin-bottom-m ">
             <EvoChain pokemon={this.state.pokemon} pokedex={this.pokedex}></EvoChain>
           </div>
 
